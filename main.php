@@ -1,7 +1,7 @@
 <?php
 
-if (isset($_GET['name'])) {
-	echo $_GET['name'];
+if (isset($_GET['choice'])) {
+	echo $_GET['choice'];
 }
 
 
