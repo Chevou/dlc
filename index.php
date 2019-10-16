@@ -16,8 +16,8 @@
 	<input type="button" id="btn2" name="btn2" value="Em 1 Semana">
 </form>
 
-<div id="val-imediato"></div>
-<div id="val-atrasado"></div>
+<div id="val-imediato">500</div>
+<div id="val-atrasado">1000</div>
 <script src="main.js" type="text/javascript"></script>
 </body>
 </html>
