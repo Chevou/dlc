@@ -1,5 +1,5 @@
 <?php 
 
-// page designated to handle errors on the final version;
+// page designated to handle errors on the final version; s  sss 
 
 ?>
