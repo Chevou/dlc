@@ -28,6 +28,12 @@ function db_set () {
 }
 
 
+function insert () {
+	// insert data into the db 
+	// prepared statments
+}
+
+
 
 
 ?>
