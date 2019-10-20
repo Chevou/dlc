@@ -19,20 +19,29 @@ function db_connect () {
 	return $connection;
 };
 
-db_connect();
+
 
 
 
 function db_set () {
-	// creat db and tables it not exists;
+	// creat db and tables it not exists
+
+	$sql = "CREATE DATABASE IF NOT EXISTS dlcr";
+	mysqli_query(db_connect(), $sql);
+
+	$tabinfo;
+	$tabigd;
+	$tabddm;
+	$tabddg;
 }
 
 
 function insert () {
 	// insert data into the db 
-	// prepared statments
+	// prepared statments	
 }
 
+db_set();
 
 
 
