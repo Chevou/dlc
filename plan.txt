@@ -2,3 +2,6 @@
 * função que fecha
 * função que guarda os valores no banco de dados
 * função que muda o tipo da tarefa
+
+
+- cor diferente nas duas tarefas
