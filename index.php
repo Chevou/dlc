@@ -11,13 +11,13 @@
 
 
 
-<form id="choiceBox">	
-	<input type="button" id="btn1" name="btn1" value="Agora">
-	<input type="button" id="btn2" name="btn2" value="Em 1 Semana">
+<form id="subject-info" action="./dlc1.php" method="post">
+	Nome: 	
+	<input type="text" name="nome">
+	<input type="submit" value="Enviar">
 </form>
 
-<div id="val-imediato">500</div>
-<div id="val-atrasado">1000</div>
-<script src="main.js" type="text/javascript"></script>
+
 </body>
 </html>
+
