@@ -2,19 +2,30 @@
 window.onload = function (){
 	var btn1 = document.getElementById('btn1');
 	var bnt2 = document.getElementById('btn2');
-	btn1.onclick = delayDiscounting;
+	btn1.onclick = delayDiscounting; 
 	btn2.onclick = delayDiscounting;
 	};
 
-var count = 0;
 var expressao = "";
 var resetter = 0;
 var contador = 0;
-var valdb = 1;
+var current_path = window.location.href;
+
+if (current_path.includes('dlc1.php')) {var valdb = 1;}
+else if (current_path.includes('dlc2.php')) {var valdb = 8;}
 
 
 // Ide
-function delayDiscounting() {	
+function delayDiscounting() {
+
+	function taskChanger (){
+		if (current_path.includes('dlc1.php') && contador >= 41){
+			window.location.replace('../dlc/intro3.php');
+		} else if (current_path.includes('dlc2.php')  && contador >= 41){
+			window.location.replace('../dlc/final.php');
+		}
+	};
+	taskChanger();	
 	
 	//identifica botão clicado, enviar valor para cálculo no PHP
 	var escolha = this.id;
@@ -41,11 +52,10 @@ function delayDiscounting() {
 		contador++;
 
 		function taskDefiner () {
-			var current_path = window.location.href;
+			
 
 			if (current_path.includes('dlc1.php')) {
 				var valoresAtrasados = ["Em 1 semana", "Em 2 semanas", "Em 1 mês", "Em 6 meses", "Em 1 ano", "Em 3 anos", "Em 10 anos"];
-			
 
 				if (contador > 0 && contador < 6) {expressao = valoresAtrasados[0]; valdb = 1;} 
 				else if (contador >= 6 && contador < 12) {expressao = valoresAtrasados[1]; valdb = 2;}
@@ -53,22 +63,29 @@ function delayDiscounting() {
 				else if (contador >= 18 && contador < 24) {expressao = valoresAtrasados[3]; valdb = 4;}
 				else if (contador >= 24 && contador < 30) {expressao = valoresAtrasados[4]; valdb = 5;}
 				else if (contador >= 30 && contador < 36) {expressao = valoresAtrasados[5]; valdb = 6;}
-				else if (contador >= 36 && contador < 42) {expressao = valoresAtrasados[6]; valdb = 7;}
+				else if (contador >= 36 && contador < 42) {expressao = valoresAtrasados[6]; valdb = 7;};
+
+				if(contador == 41) {changer = 1}
+					else {changer = 0};
 
 			} else if (current_path.includes('dlc2.php')) {
 				var valoresAtrasados = ["Em 1 hora", "Em 2 horas", "Em 6 horas", "Em 1 dia", "Em 2 dias", "Em 4 dias", "Em 7 dias"];
-			
-				if (contador > 0 && contador < 6) {expressao = valoresAtrasados[0]; valdb = 8} 
-				else if (contador >= 6 && contador < 12) {expressao = valoresAtrasados[1]; valdb = 9}
+
+				if (contador > 0 && contador < 6) {expressao = valoresAtrasados[0]; valdb = 8;} 
+				else if (contador >= 6 && contador < 12) {expressao = valoresAtrasados[1]; valdb = 9;}
 				else if (contador >= 12 && contador < 18) {expressao = valoresAtrasados[2]; valdb = 10;}
 				else if (contador >= 18 && contador < 24) {expressao = valoresAtrasados[3]; valdb = 11;}
 				else if (contador >= 24 && contador < 30) {expressao = valoresAtrasados[4]; valdb = 12;}
 				else if (contador >= 30 && contador < 36) {expressao = valoresAtrasados[5]; valdb = 13;}
 				else if (contador >= 36 && contador < 42) {expressao = valoresAtrasados[6]; valdb = 14;}
+
+				if(contador == 41) {changer = 1}
+					else {changer = 0};
 			}
 
 			btn2.value = expressao;
-			console.log(valdb); 
+			console.log(valdb);
+			console.log(contador);
 		}
 		taskDefiner();
 	}
@@ -81,9 +98,17 @@ function delayDiscounting() {
 			resetter = 0;
 	}
 
+	
 	intervalChanger();
 	reset();
 
 };
+
+
+
+
+
+
+
 
 

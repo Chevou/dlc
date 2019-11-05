@@ -1,6 +1,8 @@
 <?php
 session_start();
 require ("./db.php");
+
+
 function changeValue(){
  
 
@@ -22,7 +24,7 @@ function changeValue(){
 	$for_r6 = array(5, 11, 17, 23, 29, 35, 41);
 	
 
-if ($valdb > 0 && $valdb < 8 ){
+if ($valdb >= 1 && $valdb <= 7 ){
 	if ($resetter == 0){
 		if ($escolha == 1){ 
 			$value = $value / 2;
@@ -41,7 +43,7 @@ if ($valdb > 0 && $valdb < 8 ){
 		$valor6 = $value;
 		$value = 500;
 	} 
-}elseif ($valdb > 7 && $valdb < 15){
+}elseif ($valdb >= 8 && $valdb <= 14){
 	if ($resetter == 0){
 		if ($escolha == 1){ 
 			$value = $value / 2;
@@ -119,8 +121,8 @@ if ($valdb > 0 && $valdb < 8 ){
 		unset($valor6);
 		unset($_SESSION['result_insert']);
 	} 
-	
 
+ 
 		
 
 return $value;
