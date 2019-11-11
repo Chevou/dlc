@@ -28,7 +28,11 @@ function db_set () {
 
 	$tb_user = "CREATE TABLE IF NOT EXISTS user (
 		user_id INT AUTO_INCREMENT PRIMARY KEY,
-		name VARCHAR(50) NOT NULL) "; 
+		name VARCHAR(50) NOT NULL,
+		nascimento DATE NOT NULL,
+		
+		) ";
+
 
 	$tb_tempo_tarefa = "CREATE TABLE IF NOT EXISTS tempo_tarefa (
 		tempo_id INT AUTO_INCREMENT PRIMARY KEY,
