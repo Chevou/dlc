@@ -309,8 +309,8 @@
   			<div class = "form-group col-sm-6"> 
 				<div style="margin-bottom:10px;">Com que frequência você joga videogame?</div>			
 				<div class="form-check">
-					<input class="form-check-input" name="jogo-freq" type="radio" value="Diariamente" id="jogo-freq1">
-					<label class="form-check-label" for="jogo-freq1">Diariamente</label>
+					<input class="form-check-input" name="jogo-freq" type="radio" value="Diariamente" id="jogo-freq4">
+					<label class="form-check-label" for="jogo-freq4">Diariamente</label>
 				</div>	
 				<div class="form-check">
 					<input class="form-check-input" name="jogo-freq" type="radio" value="Semanalmente" id="jogo-freq2">
@@ -515,45 +515,354 @@
 		</div>
   		</div>
   	</fieldset>
-
-
-
-
-
-
-
-<br><br><br><br><br><br><br><br>
-		<div class="form-check">
-		<p>Você se sente preocupado com o seu comportamento em relação aos videogames?
-		(Exemplos: Pensa sobre sessões de jogos anteriores ou antecipa a próxima sessão que irá jogar; Jogar tornou-se a principal atividade do seu dia-a-dia.) </p>
-		 <input class="form-check-input" type="radio" name="q1" id="q1-1" value="1">
-		 <label class="form-check-label" for="q1-1">Nunca</label>
-		 <input class="form-check-input" type="radio" name="q2" id="q1-2" value="2">
-		 <label class="form-check-label" for="q1-2">Raramente</label>
-		 <input class="form-check-input" type="radio" name="q1" id="q1-3" value="3">
-		 <label class="form-check-label" for="q1-3">Algumas vezes</label>
-		 <input class="form-check-input" type="radio" name="q1" id="q1-4" value="4">
-		 <label class="form-check-label" for="q1-4">Frequentemente</label>
-		 <input class="form-check-input" type="radio" name="q1" id="q1-5" value="5">
-		 <label class="form-check-label" for="q1-5">Quase sempre</label>
+  	<fieldset>
+  		<legend> Preferências de Plataforma </legend>
+  		<div class="row">
+  			<div class="table-responsive">
+	  			<table class="table">
+					<thead>
+					    <tr>
+					    	<th scope="col" class="col-3">Ordem de Preferência</th>
+					    	<th scope="col">Plataforma</th>					    
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					    	<th scope="row">1</th>					      
+				    		<td>
+			      			<div class="form-group">
+								<label class="sr-only" for="platp1">Plataforma de Jogo 1</label>
+				    			<select class="form-control" name="platp1" id="platp1">
+				    				<option value="Selecione" selected disabled hidden>Selecione</option>
+								    <option value="Computador">Computador/Notebook</option>
+								    <option value="Console">Console de Jogo</option>
+								    <option value="Smartphone">Smartphone</option>
+								    <option value="Tablet">Tablet</option>  
+								</select>
+							</div>
+				      		</td>
+					    </tr>
+					    <tr>
+					    	<th scope="row">2</th>					      
+				    		<td>
+			      			<div class="form-group">
+								<label class="sr-only" for="platp2">Plataforma de Jogo 2</label>
+				    			<select class="form-control" name="platp2" id="platp2">
+				    				<option value="Selecione" selected disabled hidden>Selecione</option>
+								    <option value="Computador">Computador/Notebook</option>
+								    <option value="Console">Console de Jogo</option>
+								    <option value="Smartphone">Smartphone</option>
+								    <option value="Tablet">Tablet</option>  
+								</select>
+							</div>
+				      		</td>
+					    </tr>
+					    <tr>
+					    	<th scope="row">3</th>					      
+				    		<td>
+			      			<div class="form-group">
+								<label class="sr-only" for="platp3">Plataforma de Jogo 3</label>
+				    			<select class="form-control" name="platp3" id="platp3">
+				    				<option value="Selecione" selected disabled hidden>Selecione</option>
+								    <option value="Computador">Computador/Notebook</option>
+								    <option value="Console">Console de Jogo</option>
+								    <option value="Smartphone">Smartphone</option>
+								    <option value="Tablet">Tablet</option>  
+								</select>
+							</div>
+				      		</td>
+					    </tr>
+					    <tr>
+					    	<th scope="row">4</th>					      
+				    		<td>
+			      			<div class="form-group">
+								<label class="sr-only" for="platp4">Plataforma de Jogo 4</label>
+				    			<select class="form-control" name="platp4" id="platp4">
+				    				<option value="Selecione" selected disabled hidden>Selecione</option>
+								    <option value="Computador">Computador/Notebook</option>
+								    <option value="Console">Console de Jogo</option>
+								    <option value="Smartphone">Smartphone</option>
+								    <option value="Tablet">Tablet</option>  
+								</select>
+							</div>
+				      		</td>
+					    </tr>
+					   </tbody>
+				</table>
 		</div>
+  		</div>
+  	</fieldset>
+  	<fieldset>
+  		<legend> Questionário de Dependência de Jogos </legend>
+  		<div class="table-responsive">
+  			<table class="table">
+ 				<thead>
+ 					<tr>
+ 						<th scope="col" class="col-1">#</th>
+ 						<th scope="col" class="col-auto"></th>
+ 						<th scope="col" class="col-1">Resposta</th>
+ 					</tr>
+ 				</thead>
+ 				<tbody>
+ 					<tr>
+ 						<th scope="row">1</th>
+ 						<td> 
+ 							Você se sente preocupado com o seu comportamento em relação aos videogames? (Exemplos: Pensa sobre sessões de jogos anteriores ou antecipa a próxima sessão que irá jogar; Jogar tornou-se a principal atividade do seu dia-a-dia.)
+ 						</td>
+ 						<td>
+ 							<div class="form-check">						
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-1" value="1">
+ 							 <label class="form-check-label" for="q4-1">Nunca</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-2" value="2">
+ 							 <label class="form-check-label" for="q4-2">Raramente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-3" value="3">
+ 							 <label class="form-check-label" for="q4-3">Algumas vezes</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-4" value="4">
+ 							 <label class="form-check-label" for="q4-4">Frequentemente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-5" value="5">
+ 							 <label class="form-check-label" for="q4-5">Quase sempre</label>
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<th scope="row">2</th>
+ 						<td> 
+ 							Você se sente mais irritado(a), ansioso(a) ou até mesmo triste quando tenta reduzir ou parar de jogar?
+ 						</td>
+ 						<td>
+ 							<div class="form-check">						
+ 							 <input class="form-check-input" type="radio" name="q2" id="q2-1" value="1">
+ 							 <label class="form-check-label" for="q2-1">Nunca</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q2" id="q2-2" value="2">
+ 							 <label class="form-check-label" for="q2-2">Raramente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q2" id="q2-3" value="3">
+ 							 <label class="form-check-label" for="q2-3">Algumas vezes</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q2" id="q2-4" value="4">
+ 							 <label class="form-check-label" for="q2-4">Frequentemente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q2" id="q2-5" value="5">
+ 							 <label class="form-check-label" for="q2-5">Quase sempre</label>
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<th scope="row">3</th>
+ 						<td> 
+ 							Você sente necessidade de passar cada vez mais tempo jogando para obter satisfação ou prazer?
+ 						</td>
+ 						<td>
+ 							<div class="form-check">						
+ 							 <input class="form-check-input" type="radio" name="q3" id="q3-1" value="1">
+ 							 <label class="form-check-label" for="q3-1">Nunca</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q3" id="q3-2" value="2">
+ 							 <label class="form-check-label" for="q3-2">Raramente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q3" id="q3-3" value="3">
+ 							 <label class="form-check-label" for="q3-3">Algumas vezes</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q3" id="q3-4" value="4">
+ 							 <label class="form-check-label" for="q3-4">Frequentemente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q3" id="q3-5" value="5">
+ 							 <label class="form-check-label" for="q3-5">Quase sempre</label>
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<th scope="row">4</th>
+ 						<td> 
+ 							Você falha sistematicamente quando tenta reduzir ou deixar de jogar?
+ 						</td>
+ 						<td>
+ 							<div class="form-check">						
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-1" value="1">
+ 							 <label class="form-check-label" for="q4-1">Nunca</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-2" value="2">
+ 							 <label class="form-check-label" for="q4-2">Raramente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-3" value="3">
+ 							 <label class="form-check-label" for="q4-3">Algumas vezes</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-4" value="4">
+ 							 <label class="form-check-label" for="q4-4">Frequentemente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q4" id="q4-5" value="5">
+ 							 <label class="form-check-label" for="q4-5">Quase sempre</label>
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<th scope="row">5</th>
+ 						<td> 
+ 							Você perdeu o interesse por outras atividades de lazer em função do seu envolvimento com os videogames?
+ 						</td>
+ 						<td>
+ 							<div class="form-check">						
+ 							 <input class="form-check-input" type="radio" name="q5" id="q5-1" value="1">
+ 							 <label class="form-check-label" for="q5-1">Nunca</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q5" id="q5-2" value="2">
+ 							 <label class="form-check-label" for="q5-2">Raramente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q5" id="q5-3" value="3">
+ 							 <label class="form-check-label" for="q5-3">Algumas vezes</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q5" id="q5-4" value="4">
+ 							 <label class="form-check-label" for="q5-4">Frequentemente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q5" id="q5-5" value="5">
+ 							 <label class="form-check-label" for="q5-5">Quase sempre</label>
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<th scope="row">6</th>
+ 						<td> 
+ 							Você já continuou a jogar com a mesma intensidade mesmo sabendo que isso estava causando problemas entre você e outras pessoas?
+ 						</td>
+ 						<td>
+ 							<div class="form-check">						
+ 							 <input class="form-check-input" type="radio" name="q6" id="q6-1" value="1">
+ 							 <label class="form-check-label" for="q6-1">Nunca</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q6" id="q6-2" value="2">
+ 							 <label class="form-check-label" for="q6-2">Raramente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q6" id="q6-3" value="3">
+ 							 <label class="form-check-label" for="q6-3">Algumas vezes</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q6" id="q6-4" value="4">
+ 							 <label class="form-check-label" for="q6-4">Frequentemente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q6" id="q6-5" value="5">
+ 							 <label class="form-check-label" for="q6-5">Quase sempre</label>
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<th scope="row">7</th>
+ 						<td> 
+ 							Você já escondeu de algum familiar, terapeuta ou outra pessoa, a quantidade de tempo que passou jogando?
+ 						</td>
+ 						<td>
+ 							<div class="form-check">						
+ 							 <input class="form-check-input" type="radio" name="q7" id="q7-1" value="1">
+ 							 <label class="form-check-label" for="q7-1">Nunca</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q7" id="q7-2" value="2">
+ 							 <label class="form-check-label" for="q7-2">Raramente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q7" id="q7-3" value="3">
+ 							 <label class="form-check-label" for="q7-3">Algumas vezes</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q7" id="q7-4" value="4">
+ 							 <label class="form-check-label" for="q7-4">Frequentemente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q7" id="q7-5" value="5">
+ 							 <label class="form-check-label" for="q7-5">Quase sempre</label>
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<th scope="row">8</th>
+ 						<td> 
+ 							Você joga para evitar ou aliviar sentimentos difíceis (Exemplos: impotência, culpa, ansiedade)?
+ 						</td>
+ 						<td>
+ 							<div class="form-check">						
+ 							 <input class="form-check-input" type="radio" name="q8" id="q8-1" value="1">
+ 							 <label class="form-check-label" for="q8-1">Nunca</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q8" id="q8-2" value="2">
+ 							 <label class="form-check-label" for="q8-2">Raramente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q8" id="q8-3" value="3">
+ 							 <label class="form-check-label" for="q8-3">Algumas vezes</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q8" id="q8-4" value="4">
+ 							 <label class="form-check-label" for="q8-4">Frequentemente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q8" id="q8-5" value="5">
+ 							 <label class="form-check-label" for="q8-5">Quase sempre</label>
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<th scope="row">9</th>
+ 						<td> 
+ 							Você já colocou em risco, perdeu um relacionamento importante, oportunidade de trabalho ou educacional, por causa dos videogames?
+ 						</td>
+ 						<td>
+ 							<div class="form-check">						
+ 							 <input class="form-check-input" type="radio" name="q9" id="q9-1" value="1">
+ 							 <label class="form-check-label" for="q9-1">Nunca</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q9" id="q9-2" value="2">
+ 							 <label class="form-check-label" for="q9-2">Raramente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q9" id="q9-3" value="3">
+ 							 <label class="form-check-label" for="q9-3">Algumas vezes</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q9" id="q9-4" value="4">
+ 							 <label class="form-check-label" for="q9-4">Frequentemente</label>
+ 							</div>
+ 							<div class="form-check">
+ 							 <input class="form-check-input" type="radio" name="q9" id="q9-5" value="5">
+ 							 <label class="form-check-label" for="q9-5">Quase sempre</label>
+ 							</div>
+ 						</td>
+ 					</tr>
 
 
-		<label for="q1"> Você se sente preocupado com o seu comportamento em relação aos videogames?
-		(Exemplos: Pensa sobre sessões de jogos anteriores ou antecipa a próxima sessão que irá jogar; Jogar tornou-se a principal atividade do seu dia-a-dia.) </label>
-			<input type="radio" name = "q1" value = "Nunca">
-			<input type="radio" name = "q1" value = "Raramente">
-			<input type="radio" name = "q1" value = "Algumas Vezes">
-			<input type="radio" name = "q1" value = "Frequentemente">
-			<input type="radio" name = "q1" value = "Quase Sempre">
-		<label for="q2"> Você se sente mais irritado(a), ansioso(a) ou até mesmo triste quando tenta reduzir ou parar de jogar? </label>
-		<label for="q3"> Você sente necessidade de passar cada vez mais tempo jogando para obter satisfação ou prazer? </label>
-		<label for="q4"> Você falha sistematicamente quando tenta reduzir ou deixar de jogar? </label>
-		<label for="q5"> Você perdeu o interesse por outras atividades de lazer em função do seu envolvimento com os videogames? </label>
-		<label for="q6"> Você já continuou a jogar com a mesma intensidade mesmo sabendo que isso estava causando problemas entre você e outras pessoas? </label>
-		<label for="q7"> Você já escondeu de algum familiar, terapeuta ou outra pessoa, a quantidade de tempo que passou jogando? </label>
-		<label for="q8"> Você joga para evitar ou aliviar sentimentos difíceis (Exemplos: impotência, culpa, ansiedade)? </label>
-		<label for="q9"> Você já colocou em risco, perdeu um relacionamento importante, oportunidade de trabalho ou educacional, por causa dos videogames?) </label>
+  			</table>
+  		</div>	
+	</fieldset>
+
+
 	</form>
 </div>
 
