@@ -50,8 +50,8 @@
 				<label for="sexo">Sexo</label>
     			<select class="form-control" name="sexo" id="sexo">
     				<option value="Selecione" selected disabled hidden>Selecione</option>
-      				<option value="m">Masculino</option>
-      				<option value="f">Feminino</option>
+      				<option value="M">Masculino</option>
+      				<option value="F">Feminino</option>
     			</select>
 			</div>
 
@@ -59,19 +59,19 @@
 				<label for="estado-civil">Estado civil</label>
     			<select class="form-control" name="estado-civil" id="estado-civil">
     				<option value="Selecione" selected disabled hidden>Selecione</option>
-				    <option value="Solteiro">Solteiro(a)</option>
-				    <option value="Casado">Casado(a)</option>
-				    <option value="Namorando">Namorando</option>
-				    <option value="Divorciado">Divorciado(a)</option>
-				    <option value="Viúvo">Viúvo(a)</option>
+				    <option value="S">Solteiro(a)</option>
+				    <option value="C">Casado(a)</option>
+				    <option value="N">Namorando</option>
+				    <option value="D">Divorciado(a)</option>
+				    <option value="V">Viúvo(a)</option>
 				</select>
 			</div>
 		</div>
 
 		<div class="form-row">
 			<div class="form-group col-sm-4">
-				<label for="local">Residência atual</label>
-    			<select class="form-control" name="local" id="local">
+				<label for="residencia">Residência atual</label>
+    			<select class="form-control" name="residencia" id="residencia">
     				<option value="Selecione" selected disabled hidden>Selecione</option>
       				<option value="AC">Acre</option>
 				    <option value="AL">Alagoas</option>
@@ -145,26 +145,26 @@
 				<label for="escolaridade">Escolaridade</label>
     			<select class="form-control" name="escolaridade" id="escolaridade">
     				<option value="Selecione" selected disabled hidden>Selecione</option>
-				    <option value="Ensino Fundamental">Ensino Fundamental Completo</option>
-				    <option value="Ensino Medio">Ensino Medio Completo</option>
-				    <option value="Ensino Superior">Ensino Superior Completo</option>
-				     <option value="Pos Graduacao">Pós-Graduação Completa</option>
-				    <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
-				    <option value="Ensino Medio Incompleto">Ensino Medio Incompleto</option>
-				    <option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>
-				     <option value="Pos Graduacao Incompleta">Pós-Graduação Incompleta</option>
+				    <option value="EFC">Ensino Fundamental Completo</option>
+				    <option value="EMC">Ensino Medio Completo</option>
+				    <option value="ESCr">Ensino Superior Completo</option>
+				     <option value="PGC">Pós-Graduação Completa</option>
+				    <option value="EFI">Ensino Fundamental Incompleto</option>
+				    <option value="EMI">Ensino Medio Incompleto</option>
+				    <option value="ESI">Ensino Superior Incompleto</option>
+				     <option value="PGI">Pós-Graduação Incompleta</option>
 				</select>
 			</div>
 
 			<div class = "col-sm-3"> 
 				<div style="margin-bottom:10px;">Você estuda atualmente?</div>
 				<div class="checkbox-inline">
-					<input class="form-check-input" name="estudo" type="radio" value="s" id="estudo1">
-					<label class="form-check-label" for="estudo1">Sim</label>
+					<input class="form-check-input" name="is_estudante" type="radio" value="1" id="is_estudante1">
+					<label class="form-check-label" for="is_estudante1">Sim</label>
 				</div>				
 				<div class="checkbox-inline">
-					<input class="form-check-input" name="estudo" type="radio" value="n" id="estudo2">
-					<label class="form-check-label" for="estudo2">Não</label>
+					<input class="form-check-input" name="is_estudante" type="radio" value="0" id="is_estudante2">
+					<label class="form-check-label" for="is_estudante2">Não</label>
 				</div>		
 			</div>
 				
@@ -173,21 +173,21 @@
 				<label for="formacao">Área de Formação</label>
     			<select class="form-control" name="formacao" id="formacao">
     				<option value="Selecione" selected disabled hidden>Qual área você cursa/formou-se?</option>
-				    <option value="Humanas">Ciências Humanas</option>
-				    <option value="Exatas">Ciências Humanas</option>
-				    <option value="Biologicas">Ciências Biológicas</option>
-				    <option value="Tecnologo">Curso Tecnólogo</option>
+				    <option value="H">Ciências Humanas</option>
+				    <option value="E">Ciências Exatas</option>
+				    <option value="B">Ciências Biológicas</option>
+				    <option value="T">Curso Tecnólogo</option>
 				</select>
 			</div>
 
 			<div class="form-group col-sm-2">
 				<label for="formacao">Condição de Estudo</label>
-    			<select class="form-control" name="c-estudo" id="c-estudo">
+    			<select class="form-control" name="horario_estudo" id="horario_estudo">
     				<option value="Selecione" selected disabled hidden>Selecione</option>
-				    <option value="Matutino">Matutino</option>
-				    <option value="Vespertino">Vespertino</option>
-				    <option value="Noturno">Noturno</option>
-				    <option value="Integral">Integral</option>
+				    <option value="M">Matutino</option>
+				    <option value="V">Vespertino</option>
+				    <option value="N">Noturno</option>
+				    <option value="I">Integral</option>
 				</select>
 			</div>
 
@@ -230,23 +230,23 @@
 				<div class = "col-sm-3"> 
 					<div style="margin-bottom:10px;">Você faz uso de Álcool?</div>
 					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="Nunca" id="alcool1">
+						<input class="form-check-input" name="alcool" type="radio" value="1" id="alcool1">
 						<label class="form-check-label" for="alcool1">Nunca fiz</label>
 					</div>				
 					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="Diariamente" id="alcool2">
+						<input class="form-check-input" name="alcool" type="radio" value="2" id="alcool2">
 						<label class="form-check-label" for="alcool2">Diariamente</label>
 					</div>	
 					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="Semanalmente" id="alcool3">
+						<input class="form-check-input" name="alcool" type="radio" value="3" id="alcool3">
 						<label class="form-check-label" for="alcool3">Semanalmente</label>
 					</div>	
 					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="Mensalmente" id="alcool4">
+						<input class="form-check-input" name="alcool" type="radio" value="4" id="alcool4">
 						<label class="form-check-label" for="alcool4">Mensalmente</label>
 					</div>	
 					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="Vida" id="alcool5">
+						<input class="form-check-input" name="alcool" type="radio" value="5" id="alcool5">
 						<label class="form-check-label" for="alcool5">Alguma vez na Vida</label>
 					</div>		
 				</div>
@@ -254,23 +254,23 @@
 				<div class = "col-sm-3"> 
 					<div style="margin-bottom:10px;">Você faz uso de Tabaco?</div>
 					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="Nunca" id="tabaco1">
+						<input class="form-check-input" name="tabaco" type="radio" value="1" id="tabaco1">
 						<label class="form-check-label" for="tabaco1">Nunca fiz</label>
 					</div>				
 					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="Diariamente" id="tabaco2">
+						<input class="form-check-input" name="tabaco" type="radio" value="2" id="tabaco2">
 						<label class="form-check-label" for="tabaco2">Diariamente</label>
 					</div>	
 					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="Semanalmente" id="tabaco3">
+						<input class="form-check-input" name="tabaco" type="radio" value="3" id="tabaco3">
 						<label class="form-check-label" for="tabaco3">Semanalmente</label>
 					</div>	
 					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="Mensalmente" id="tabaco4">
+						<input class="form-check-input" name="tabaco" type="radio" value="4" id="tabaco4">
 						<label class="form-check-label" for="tabaco4">Mensalmente</label>
 					</div>	
 					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="Vida" id="tabaco5">
+						<input class="form-check-input" name="tabaco" type="radio" value="5" id="tabaco5">
 						<label class="form-check-label" for="tabaco5">Alguma vez na Vida</label>
 					</div>		
 				</div>
@@ -278,23 +278,23 @@
 				<div class = "col-sm-3"> 
 					<div style="margin-bottom:10px;">Você faz uso de Alguma outra Droga?</div>
 					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="Nunca" id="odroga1">
+						<input class="form-check-input" name="odroga" type="radio" value="1" id="odroga1">
 						<label class="form-check-label" for="odroga1">Nunca fiz</label>
 					</div>				
 					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="Diariamente" id="odroga2">
+						<input class="form-check-input" name="odroga" type="radio" value="2" id="odroga2">
 						<label class="form-check-label" for="odroga2">Diariamente</label>
 					</div>	
 					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="Semanalmente" id="odroga3">
+						<input class="form-check-input" name="odroga" type="radio" value="3" id="odroga3">
 						<label class="form-check-label" for="odroga3">Semanalmente</label>
 					</div>	
 					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="Mensalmente" id="odroga4">
+						<input class="form-check-input" name="odroga" type="radio" value="4" id="odroga4">
 						<label class="form-check-label" for="odroga4">Mensalmente</label>
 					</div>	
 					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="Vida" id="odroga5">
+						<input class="form-check-input" name="odroga" type="radio" value="5" id="odroga5">
 						<label class="form-check-label" for="odroga5">Alguma vez na Vida</label>
 					</div>		
 				</div>
@@ -309,15 +309,15 @@
   			<div class = "form-group col-sm-6"> 
 				<div style="margin-bottom:10px;">Com que frequência você joga videogame?</div>			
 				<div class="form-check">
-					<input class="form-check-input" name="jogo-freq" type="radio" value="Diariamente" id="jogo-freq4">
+					<input class="form-check-input" name="jogo-freq" type="radio" value="2" id="jogo-freq4">
 					<label class="form-check-label" for="jogo-freq4">Diariamente</label>
 				</div>	
 				<div class="form-check">
-					<input class="form-check-input" name="jogo-freq" type="radio" value="Semanalmente" id="jogo-freq2">
+					<input class="form-check-input" name="jogo-freq" type="radio" value="3" id="jogo-freq2">
 					<label class="form-check-label" for="jogo-freq2">Semanalmente</label>
 				</div>	
 				<div class="form-check">
-					<input class="form-check-input" name="jogo-freq" type="radio" value="Mensalmente" id="jogo-freq3">
+					<input class="form-check-input" name="jogo-freq" type="radio" value="4" id="jogo-freq3">
 					<label class="form-check-label" for="jogo-freq3">Mensalmente</label>
 				</div>					
 			</div>
@@ -861,6 +861,11 @@
   			</table>
   		</div>	
 	</fieldset>
+	<div class="form-row mb-5 mt-3">
+		<div class="offset-9 offset-sm-10">
+			<button type="submit" class="btn btn-dark">Enviar</button>
+		</div>
+	</div>
 
 
 	</form>

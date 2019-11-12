@@ -26,11 +26,24 @@ function db_set () {
 	$sql = "CREATE DATABASE IF NOT EXISTS dlcr";
 	mysqli_query(db_connect(), $sql);
 
-	$tb_user = "CREATE TABLE IF NOT EXISTS user (
+	$tb_user = "CREATE TABLE IF NOT EXISTS personal_info (
 		user_id INT AUTO_INCREMENT PRIMARY KEY,
-		name VARCHAR(50) NOT NULL,
 		nascimento DATE NOT NULL,
-		
+		sexo CHAR(1) NOT NULL,
+		estado_civil CHAR(1) NOT NULL,
+		residencia CHAR(2) NOT NULL,
+		naturalidade CHAR(2) NOT NULL,
+		escolaridade CHAR(3) NOT NULL,
+		is_estudante TINYINT(1) NOT NULL,
+		area_formacao CHAR(1) NOT NULL,
+		horario_estudo CHAR(1) NOT NULL,
+		trabalha CHAR(1) ENUM(s,n),
+		profissao VARCHAR(100),
+		horario_trab CHAR(1) ENUM(c,m,e),
+		alcool 
+		tabaco
+		outra_droga
+
 		) ";
 
 
