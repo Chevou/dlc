@@ -1,882 +1,128 @@
- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title> Questionário de Hábitos do Jogador</title>
-</head>
-<body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ <?php
+session_start();
 
-</body>
-</html>
+$consent = isset($_POST['consentimento']) ? $_POST['consentimento'] : 0;
+$_SESSION['consent'] = $consent;
 
+$gamer = $consent = isset($_POST['is_gamer']) ? $_POST['is_gamer'] : 0;
+$_SESSION['gamer'] = $gamer;
+
+if ($consent == 1 && $gamer == 1) {
+	header('Location: ./questionario.php');
+}
+
+ ?>
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="pt-br">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
-
-    <!-- Bootstrap -->
+    <title></title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
- </head>
- <body>
+</head>
+<body>
+<script src="./formscript.js" type="text/JavaScript"></script>
+<form method="post" action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 
-<div class = "jumbotron"> teste </div>
-<div class = "container">
-	<form id="subject-info" action="./intro2.php" method="post">
-	<fieldset>
-		<legend> Informações Pessoais </legend>
+<div class="container">
+	<div class="jumbotron border-bottom" style="background-color: white;">			
+		<h4 class="display-4"> Jogos Eletrônicos </h4>
+		<h4><small class="text-muted"> Avaliação sobre hábitos de jogadores e o modo como fazem escolhas </small></h4>
+	</div>
 
-		<div class="form-row">
-			<div class="form-group col-sm-3">
-	    	<label for="nascimento col-form-label">Data de Nascimento</label>
-	    	<input type="date" class="form-control" name="nascimento" id="nascimento">
-	  		</div>
 
-			<div class="form-group col-sm-4">
-				<label for="sexo">Sexo</label>
-    			<select class="form-control" name="sexo" id="sexo">
-    				<option value="Selecione" selected disabled hidden>Selecione</option>
-      				<option value="M">Masculino</option>
-      				<option value="F">Feminino</option>
-    			</select>
-			</div>
+	<div class="row justify-content-center text-justify">		
+		<div class="col-sm-10 col-lg-8">
+			<h1 class="text-left"> Bem vindo(a)! </h1>			
 
-				<div class="form-group col-sm-5">
-				<label for="estado-civil">Estado civil</label>
-    			<select class="form-control" name="estado-civil" id="estado-civil">
-    				<option value="Selecione" selected disabled hidden>Selecione</option>
-				    <option value="S">Solteiro(a)</option>
-				    <option value="C">Casado(a)</option>
-				    <option value="N">Namorando</option>
-				    <option value="D">Divorciado(a)</option>
-				    <option value="V">Viúvo(a)</option>
-				</select>
-			</div>
-		</div>
+			<p> Obrigado por aceitar nosso convite para responder ao questionário. </p>
 
-		<div class="form-row">
-			<div class="form-group col-sm-4">
-				<label for="residencia">Residência atual</label>
-    			<select class="form-control" name="residencia" id="residencia">
-    				<option value="Selecione" selected disabled hidden>Selecione</option>
-      				<option value="AC">Acre</option>
-				    <option value="AL">Alagoas</option>
-				    <option value="AP">Amapá</option>
-				    <option value="AM">Amazonas</option>
-				    <option value="BA">Bahia</option>
-				    <option value="CE">Ceará</option>
-				    <option value="DF">Distrito Federal</option>
-				    <option value="ES">Espírito Santo</option>
-				    <option value="GO">Goiás</option>
-				    <option value="MA">Maranhão</option>
-				    <option value="MT">Mato Grosso</option>
-				    <option value="MS">Mato Grosso do Sul</option>
-				    <option value="MG">Minas Gerais</option>
-				    <option value="PA">Pará</option>
-				    <option value="PB">Paraíba</option>
-				    <option value="PR">Paraná</option>
-				    <option value="PE">Pernambuco</option>
-				    <option value="PI">Piauí</option>
-				    <option value="RJ">Rio de Janeiro</option>
-				    <option value="RN">Rio Grande do Norte</option>
-				    <option value="RS">Rio Grande do Sul</option>
-				    <option value="RO">Rondônia</option>
-				    <option value="RR">Roraima</option>
-				    <option value="SC">Santa Catarina</option>
-				    <option value="SP">São Paulo</option>
-				    <option value="SE">Sergipe</option>
-				    <option value="TO">Tocantins</option>
-				    <option value="EX">Estrangeiro</option>
-    			</select>
-			</div>
-
-			<div class="form-group col-sm-4">
-				<label for="naturalidade">Naturalidade</label>
-    			<select class="form-control" name="naturalidade" id="naturalidade">
-    				<option value="Selecione" selected disabled hidden>Selecione</option>
-      				<option value="AC">Acre</option>
-				    <option value="AL">Alagoas</option>
-				    <option value="AP">Amapá</option>
-				    <option value="AM">Amazonas</option>
-				    <option value="BA">Bahia</option>
-				    <option value="CE">Ceará</option>
-				    <option value="DF">Distrito Federal</option>
-				    <option value="ES">Espírito Santo</option>
-				    <option value="GO">Goiás</option>
-				    <option value="MA">Maranhão</option>
-				    <option value="MT">Mato Grosso</option>
-				    <option value="MS">Mato Grosso do Sul</option>
-				    <option value="MG">Minas Gerais</option>
-				    <option value="PA">Pará</option>
-				    <option value="PB">Paraíba</option>
-				    <option value="PR">Paraná</option>
-				    <option value="PE">Pernambuco</option>
-				    <option value="PI">Piauí</option>
-				    <option value="RJ">Rio de Janeiro</option>
-				    <option value="RN">Rio Grande do Norte</option>
-				    <option value="RS">Rio Grande do Sul</option>
-				    <option value="RO">Rondônia</option>
-				    <option value="RR">Roraima</option>
-				    <option value="SC">Santa Catarina</option>
-				    <option value="SP">São Paulo</option>
-				    <option value="SE">Sergipe</option>
-				    <option value="TO">Tocantins</option>
-				    <option value="EX">Estrangeiro</option>
-    			</select>
-			</div>
-		</div>
-
-		<div class="form-row">
-			<div class="form-group col-sm-3">
-				<label for="escolaridade">Escolaridade</label>
-    			<select class="form-control" name="escolaridade" id="escolaridade">
-    				<option value="Selecione" selected disabled hidden>Selecione</option>
-				    <option value="EFC">Ensino Fundamental Completo</option>
-				    <option value="EMC">Ensino Medio Completo</option>
-				    <option value="ESCr">Ensino Superior Completo</option>
-				     <option value="PGC">Pós-Graduação Completa</option>
-				    <option value="EFI">Ensino Fundamental Incompleto</option>
-				    <option value="EMI">Ensino Medio Incompleto</option>
-				    <option value="ESI">Ensino Superior Incompleto</option>
-				     <option value="PGI">Pós-Graduação Incompleta</option>
-				</select>
-			</div>
-
-			<div class = "col-sm-3"> 
-				<div style="margin-bottom:10px;">Você estuda atualmente?</div>
-				<div class="checkbox-inline">
-					<input class="form-check-input" name="is_estudante" type="radio" value="1" id="is_estudante1">
-					<label class="form-check-label" for="is_estudante1">Sim</label>
-				</div>				
-				<div class="checkbox-inline">
-					<input class="form-check-input" name="is_estudante" type="radio" value="0" id="is_estudante2">
-					<label class="form-check-label" for="is_estudante2">Não</label>
-				</div>		
-			</div>
-				
-
-			<div class="form-group col-sm-4">
-				<label for="formacao">Área de Formação</label>
-    			<select class="form-control" name="formacao" id="formacao">
-    				<option value="Selecione" selected disabled hidden>Qual área você cursa/formou-se?</option>
-				    <option value="H">Ciências Humanas</option>
-				    <option value="E">Ciências Exatas</option>
-				    <option value="B">Ciências Biológicas</option>
-				    <option value="T">Curso Tecnólogo</option>
-				</select>
-			</div>
-
-			<div class="form-group col-sm-2">
-				<label for="formacao">Condição de Estudo</label>
-    			<select class="form-control" name="horario_estudo" id="horario_estudo">
-    				<option value="Selecione" selected disabled hidden>Selecione</option>
-				    <option value="M">Matutino</option>
-				    <option value="V">Vespertino</option>
-				    <option value="N">Noturno</option>
-				    <option value="I">Integral</option>
-				</select>
-			</div>
-
-		</div>
-
-		<div class="form-row">
-			<div class = "col-sm-3"> 
-				<div style="margin-bottom:10px;">Você trabalha atualmente?</div>
-				<div class="checkbox-inline">
-					<input class="form-check-input" name="profask" type="radio" value="s" id="profask1">
-					<label class="form-check-label" for="profask1">Sim</label>
-				</div>				
-				<div class="checkbox-inline">
-					<input class="form-check-input" name="profask" type="radio" value="n" id="profask2">
-					<label class="form-check-label" for="profask2">Não</label>
-				</div>		
-			</div>
-		</div>
-
-		<div class="form-row">
-			<div class="form-group col-sm-6">
-				<label for="profissao" class = "col-form-label" value="profissao">Profissão</label>
-	    		<input type="text" class="form-control" name="profissao" id="profissao" placeholder="Profissão">
-			</div>
-			<div class="form-group col-sm-6">
-				<label for="h-trabalho">Condição de Trabalho</label>
-    			<select class="form-control" name="h-trabalho" id="h-trabalho">
-    				<option value="Selecione" selected disabled hidden>Selecione</option>
-				    <option value="Período Completo">Período Completo</option>
-				    <option value="Meio Período">Meio Período</option>
-				    <option value="Eventualmente">Eventualmente</option>
-				</select>
-			</div>			
-		</div>
-
-		<fieldset>
-			<legend> Uso de Drogas </legend>
-
-			<div class="row align-items-center">
-				<div class = "col-sm-3"> 
-					<div style="margin-bottom:10px;">Você faz uso de Álcool?</div>
-					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="1" id="alcool1">
-						<label class="form-check-label" for="alcool1">Nunca fiz</label>
-					</div>				
-					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="2" id="alcool2">
-						<label class="form-check-label" for="alcool2">Diariamente</label>
-					</div>	
-					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="3" id="alcool3">
-						<label class="form-check-label" for="alcool3">Semanalmente</label>
-					</div>	
-					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="4" id="alcool4">
-						<label class="form-check-label" for="alcool4">Mensalmente</label>
-					</div>	
-					<div class="form-check">
-						<input class="form-check-input" name="alcool" type="radio" value="5" id="alcool5">
-						<label class="form-check-label" for="alcool5">Alguma vez na Vida</label>
-					</div>		
+			
+			<!-- Pergunta se é gamer  -->
+			<div class="form-group text-center">
+				<span class="text-center"><h5>Você joga vigeo games? <br><small>(Qualquer plataforma é válida: computador, console, smartphones etc.)</small></h5></span>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" id="is_gamer1" name="is_gamer" type="radio" value="1" onclick="isgamer();" required>
+					<label class="form-check-label" for="is_gamer1">Sim, eu jogo.</label>
 				</div>
-
-				<div class = "col-sm-3"> 
-					<div style="margin-bottom:10px;">Você faz uso de Tabaco?</div>
-					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="1" id="tabaco1">
-						<label class="form-check-label" for="tabaco1">Nunca fiz</label>
-					</div>				
-					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="2" id="tabaco2">
-						<label class="form-check-label" for="tabaco2">Diariamente</label>
-					</div>	
-					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="3" id="tabaco3">
-						<label class="form-check-label" for="tabaco3">Semanalmente</label>
-					</div>	
-					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="4" id="tabaco4">
-						<label class="form-check-label" for="tabaco4">Mensalmente</label>
-					</div>	
-					<div class="form-check">
-						<input class="form-check-input" name="tabaco" type="radio" value="5" id="tabaco5">
-						<label class="form-check-label" for="tabaco5">Alguma vez na Vida</label>
-					</div>		
-				</div>
-
-				<div class = "col-sm-3"> 
-					<div style="margin-bottom:10px;">Você faz uso de Alguma outra Droga?</div>
-					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="1" id="odroga1">
-						<label class="form-check-label" for="odroga1">Nunca fiz</label>
-					</div>				
-					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="2" id="odroga2">
-						<label class="form-check-label" for="odroga2">Diariamente</label>
-					</div>	
-					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="3" id="odroga3">
-						<label class="form-check-label" for="odroga3">Semanalmente</label>
-					</div>	
-					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="4" id="odroga4">
-						<label class="form-check-label" for="odroga4">Mensalmente</label>
-					</div>	
-					<div class="form-check">
-						<input class="form-check-input" name="odroga" type="radio" value="5" id="odroga5">
-						<label class="form-check-label" for="odroga5">Alguma vez na Vida</label>
-					</div>		
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" id="is_gamer2" name="is_gamer" type="radio" value="0" onclick="isgamer();" required>
+					<label class="form-check-label" for="is_gamer2">Não, não eu jogo.</label>
 				</div>
 			</div>
-		</fieldset>
-  	</fieldset>
-
-  	<fieldset> 
-  		<legend> Hábitos de Jogo </legend>
-
-  		<div class="form-row">
-  			<div class = "form-group col-sm-6"> 
-				<div style="margin-bottom:10px;">Com que frequência você joga videogame?</div>			
-				<div class="form-check">
-					<input class="form-check-input" name="jogo-freq" type="radio" value="2" id="jogo-freq4">
-					<label class="form-check-label" for="jogo-freq4">Diariamente</label>
-				</div>	
-				<div class="form-check">
-					<input class="form-check-input" name="jogo-freq" type="radio" value="3" id="jogo-freq2">
-					<label class="form-check-label" for="jogo-freq2">Semanalmente</label>
-				</div>	
-				<div class="form-check">
-					<input class="form-check-input" name="jogo-freq" type="radio" value="4" id="jogo-freq3">
-					<label class="form-check-label" for="jogo-freq3">Mensalmente</label>
-				</div>					
-			</div>
-
-			<div class="form-group col-sm-6">
-			    <label for="horasporsemana">Em média, quantas horas por semana você costuma jogar?</label>
-			    <div class="input-group">
-				    <input type="number" class="form-control" style="max-width: 80px;" name="horasporsemana" id="horasporsemana" min='1' max="168">
-				    <div class="input-group-append">
-		    			<span class="input-group-text" id="basic-addon1">Hora/Semana</span>
-		  			</div>
-	  			</div>
-  			</div>  			
-  		</div>
-
-	  	<div class='form-row'>
-	  		<div class="form-group col-sm-6">
-			    <label for="jogoporvida">Aproximadamente, há quanto tempo em sua vida você joga videogame?</label>
-			    <div class="input-group">
-				    <input type="number" class="form-control" style="max-width: 80px;" name="jogoporvida" id="jogoporvida" min='1' max="69">
-				    <div class="input-group-append">
-		    			<span class="input-group-text" id="basic-addon2">Anos</span>
-		  			</div>
-	  			</div>
-  			</div>
-
-  			<div class="form-group col-sm-6">
-			    <label for="sessaojogo">Quanto tempo, em média, você passa em uma sessão de jogo?</label>
-			    <div class="input-group">
-				    <input type="number" class="form-control" style="max-width: 80px;" name="sessaojogo" id="sessaojogo" min='1' max="48">
-				    <div class="input-group-append">
-		    			<span class="input-group-text" id="basic-addon3">Minutos</span>
-		  			</div>
-	  			</div>
-  			</div>
-	  	</div>
-
-	  	<div class="form-row">
-	  		<div class = "col"> 
-					<div style="margin-bottom:10px;">
-						Você joga videogame competitivamente e/ou como parte de uma equipe profissional?
-					</div>
-					<div class="form-check-inline">
-						<input class="form-check-input" name="comp" type="radio" value="s" id="comp1">
-						<label class="form-check-label" for="comp1">Sim</label>
-					</div>				
-					<div class="form-check-inline">
-						<input class="form-check-input" name="comp" type="radio" value="n" id="comp2">
-						<label class="form-check-label" for="comp2">Não</label>
-					</div>	
-				</div>
-	  	</div>
-  	</fieldset>
-  	<fieldset>
-  		<legend> Preferências de Jogo </legend>
-  		<div class="row">
-  			<div class="table-responsive">
-	  			<table class="table">
-					<thead>
-					    <tr>
-					    	<th scope="col">Ordem</th>
-					    	<th scope="col">Título do Jogo</th>
-					    	<th scope="col">Horas por semana</th>
-					    	<th scope="col">Singleplayer ou multiplayer</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr>
-					      <th scope="row">1</th>
-					      <td>
-					      	<div class="form-group">
-	    						<label class="sr-only" for="gamep1">Jogo 1</label>
-	    						<input type="text" class="form-control" id="gamep1" name="gamep1" placeholder="Jogo 1">
- 							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-time1">Horas por semana no Jogo 1</label>								
-								<input type="number" class="form-control" name="gamep-time1" id="gamep-time1" min='1' max="168">			
-  							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-mode1">Modo preferido para Jogo 1</label>
-				    			<select class="form-control" name="gamep-mode1" id="gamep-mode1">
-				    				<option value="Selecione" selected disabled hidden>Selecione</option>
-								    <option value="Singleplayer">Singleplayer</option>
-								    <option value="Multiplayer">Multiplayer</option>							     
-								</select>
-							</div>
-					      </td>
-					    </tr>
-					    <tr>
-					      <th scope="row">2</th>
-					      <td>
-					      	<div class="form-group">
-	    						<label class="sr-only" for="gamep-time2">Jogo 2</label>
-	    						<input type="text" class="form-control" id="gamep-time2" name="gamep-time2" placeholder="Jogo 2">
- 							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-time2">Horas por semana no Jogo 2</label>								
-								<input type="number" class="form-control" name="gamep-time2" id="gamep-time2" min='1' max="168">			
-  							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-mode1">Modo preferido para Jogo 2</label>
-				    			<select class="form-control" name="gamep-mode2" id="gamep-mode2">
-				    				<option value="Selecione" selected disabled hidden>Selecione</option>
-								    <option value="Singleplayer">Singleplayer</option>
-								    <option value="Multiplayer">Multiplayer</option>							     
-								</select>
-							</div>
-					      </td>
-					    </tr>
-					    <tr>
-					      <th scope="row">3</th>
-					      <td>
-					      	<div class="form-group">
-	    						<label class="sr-only" for="gamep3">Jogo 3</label>
-	    						<input type="text" class="form-control" id="gamep3" name="gamep3" placeholder="Jogo 3">
- 							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-time3">Horas por semana no Jogo 3</label>								
-								<input type="number" class="form-control" name="gamep-time3" id="gamep-time3" min='1' max="168">			
-  							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-mode1">Modo preferido para Jogo 3</label>
-				    			<select class="form-control" name="gamep-mode3" id="gamep-mode3">
-				    				<option value="Selecione" selected disabled hidden>Selecione</option>
-								    <option value="Singleplayer">Singleplayer</option>
-								    <option value="Multiplayer">Multiplayer</option>							     
-								</select>
-							</div>
-					      </td>
-					    </tr>
-					    <tr>
-					      <th scope="row">4</th>
-					      <td>
-					      	<div class="form-group">
-	    						<label class="sr-only" for="gamep4">Jogo 4</label>
-	    						<input type="text" class="form-control" id="gamep4" name="gamep4" placeholder="Jogo 4">
- 							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-time4">Horas por semana no Jogo 4</label>								
-								<input type="number" class="form-control" name="gamep-time4" id="gamep-time4" min='1' max="168">			
-  							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-mode1">Modo preferido para Jogo 4</label>
-				    			<select class="form-control" name="gamep-mode4" id="gamep-mode4">
-				    				<option value="Selecione" selected disabled hidden>Selecione</option>
-								    <option value="Singleplayer">Singleplayer</option>
-								    <option value="Multiplayer">Multiplayer</option>							     
-								</select>
-							</div>
-					      </td>
-					    </tr>
-					    <tr>
-					      <th scope="row">5</th>
-					      <td>
-					      	<div class="form-group">
-	    						<label class="sr-only" for="gamep5">Jogo 5</label>
-	    						<input type="text" class="form-control" id="gamep5" name="gamep5" placeholder="Jogo 5">
- 							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-time5">Horas por semana no Jogo 5</label>								
-								<input type="number" class="form-control" name="gamep-time5" id="gamep-time5" min='1' max="168">			
-  							</div>
-					      </td>
-					      <td>
-					      	<div class="form-group">
-								<label class="sr-only" for="gamep-mode1">Modo preferido para Jogo 5</label>
-				    			<select class="form-control" name="gamep-mode5" id="gamep-mode5">
-				    				<option value="Selecione" selected disabled hidden>Selecione</option>
-								    <option value="Singleplayer">Singleplayer</option>
-								    <option value="Multiplayer">Multiplayer</option>							     
-								</select>
-							</div>
-					      </td>
-					    </tr>
-					  </tbody>
-				</table>
 		</div>
-  		</div>
-  	</fieldset>
-  	<fieldset>
-  		<legend> Preferências de Plataforma </legend>
-  		<div class="row">
-  			<div class="table-responsive">
-	  			<table class="table">
-					<thead>
-					    <tr>
-					    	<th scope="col" class="col-3">Ordem de Preferência</th>
-					    	<th scope="col">Plataforma</th>					    
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr>
-					    	<th scope="row">1</th>					      
-				    		<td>
-			      			<div class="form-group">
-								<label class="sr-only" for="platp1">Plataforma de Jogo 1</label>
-				    			<select class="form-control" name="platp1" id="platp1">
-				    				<option value="Selecione" selected disabled hidden>Selecione</option>
-								    <option value="Computador">Computador/Notebook</option>
-								    <option value="Console">Console de Jogo</option>
-								    <option value="Smartphone">Smartphone</option>
-								    <option value="Tablet">Tablet</option>  
-								</select>
-							</div>
-				      		</td>
-					    </tr>
-					    <tr>
-					    	<th scope="row">2</th>					      
-				    		<td>
-			      			<div class="form-group">
-								<label class="sr-only" for="platp2">Plataforma de Jogo 2</label>
-				    			<select class="form-control" name="platp2" id="platp2">
-				    				<option value="Selecione" selected disabled hidden>Selecione</option>
-								    <option value="Computador">Computador/Notebook</option>
-								    <option value="Console">Console de Jogo</option>
-								    <option value="Smartphone">Smartphone</option>
-								    <option value="Tablet">Tablet</option>  
-								</select>
-							</div>
-				      		</td>
-					    </tr>
-					    <tr>
-					    	<th scope="row">3</th>					      
-				    		<td>
-			      			<div class="form-group">
-								<label class="sr-only" for="platp3">Plataforma de Jogo 3</label>
-				    			<select class="form-control" name="platp3" id="platp3">
-				    				<option value="Selecione" selected disabled hidden>Selecione</option>
-								    <option value="Computador">Computador/Notebook</option>
-								    <option value="Console">Console de Jogo</option>
-								    <option value="Smartphone">Smartphone</option>
-								    <option value="Tablet">Tablet</option>  
-								</select>
-							</div>
-				      		</td>
-					    </tr>
-					    <tr>
-					    	<th scope="row">4</th>					      
-				    		<td>
-			      			<div class="form-group">
-								<label class="sr-only" for="platp4">Plataforma de Jogo 4</label>
-				    			<select class="form-control" name="platp4" id="platp4">
-				    				<option value="Selecione" selected disabled hidden>Selecione</option>
-								    <option value="Computador">Computador/Notebook</option>
-								    <option value="Console">Console de Jogo</option>
-								    <option value="Smartphone">Smartphone</option>
-								    <option value="Tablet">Tablet</option>  
-								</select>
-							</div>
-				      		</td>
-					    </tr>
-					   </tbody>
-				</table>
-		</div>
-  		</div>
-  	</fieldset>
-  	<fieldset>
-  		<legend> Questionário de Dependência de Jogos </legend>
-  		<div class="table-responsive">
-  			<table class="table">
- 				<thead>
- 					<tr>
- 						<th scope="col" class="col-1">#</th>
- 						<th scope="col" class="col-auto"></th>
- 						<th scope="col" class="col-1">Resposta</th>
- 					</tr>
- 				</thead>
- 				<tbody>
- 					<tr>
- 						<th scope="row">1</th>
- 						<td> 
- 							Você se sente preocupado com o seu comportamento em relação aos videogames? (Exemplos: Pensa sobre sessões de jogos anteriores ou antecipa a próxima sessão que irá jogar; Jogar tornou-se a principal atividade do seu dia-a-dia.)
- 						</td>
- 						<td>
- 							<div class="form-check">						
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-1" value="1">
- 							 <label class="form-check-label" for="q4-1">Nunca</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-2" value="2">
- 							 <label class="form-check-label" for="q4-2">Raramente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-3" value="3">
- 							 <label class="form-check-label" for="q4-3">Algumas vezes</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-4" value="4">
- 							 <label class="form-check-label" for="q4-4">Frequentemente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-5" value="5">
- 							 <label class="form-check-label" for="q4-5">Quase sempre</label>
- 							</div>
- 						</td>
- 					</tr>
- 					<tr>
- 						<th scope="row">2</th>
- 						<td> 
- 							Você se sente mais irritado(a), ansioso(a) ou até mesmo triste quando tenta reduzir ou parar de jogar?
- 						</td>
- 						<td>
- 							<div class="form-check">						
- 							 <input class="form-check-input" type="radio" name="q2" id="q2-1" value="1">
- 							 <label class="form-check-label" for="q2-1">Nunca</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q2" id="q2-2" value="2">
- 							 <label class="form-check-label" for="q2-2">Raramente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q2" id="q2-3" value="3">
- 							 <label class="form-check-label" for="q2-3">Algumas vezes</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q2" id="q2-4" value="4">
- 							 <label class="form-check-label" for="q2-4">Frequentemente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q2" id="q2-5" value="5">
- 							 <label class="form-check-label" for="q2-5">Quase sempre</label>
- 							</div>
- 						</td>
- 					</tr>
- 					<tr>
- 						<th scope="row">3</th>
- 						<td> 
- 							Você sente necessidade de passar cada vez mais tempo jogando para obter satisfação ou prazer?
- 						</td>
- 						<td>
- 							<div class="form-check">						
- 							 <input class="form-check-input" type="radio" name="q3" id="q3-1" value="1">
- 							 <label class="form-check-label" for="q3-1">Nunca</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q3" id="q3-2" value="2">
- 							 <label class="form-check-label" for="q3-2">Raramente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q3" id="q3-3" value="3">
- 							 <label class="form-check-label" for="q3-3">Algumas vezes</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q3" id="q3-4" value="4">
- 							 <label class="form-check-label" for="q3-4">Frequentemente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q3" id="q3-5" value="5">
- 							 <label class="form-check-label" for="q3-5">Quase sempre</label>
- 							</div>
- 						</td>
- 					</tr>
- 					<tr>
- 						<th scope="row">4</th>
- 						<td> 
- 							Você falha sistematicamente quando tenta reduzir ou deixar de jogar?
- 						</td>
- 						<td>
- 							<div class="form-check">						
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-1" value="1">
- 							 <label class="form-check-label" for="q4-1">Nunca</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-2" value="2">
- 							 <label class="form-check-label" for="q4-2">Raramente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-3" value="3">
- 							 <label class="form-check-label" for="q4-3">Algumas vezes</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-4" value="4">
- 							 <label class="form-check-label" for="q4-4">Frequentemente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q4" id="q4-5" value="5">
- 							 <label class="form-check-label" for="q4-5">Quase sempre</label>
- 							</div>
- 						</td>
- 					</tr>
- 					<tr>
- 						<th scope="row">5</th>
- 						<td> 
- 							Você perdeu o interesse por outras atividades de lazer em função do seu envolvimento com os videogames?
- 						</td>
- 						<td>
- 							<div class="form-check">						
- 							 <input class="form-check-input" type="radio" name="q5" id="q5-1" value="1">
- 							 <label class="form-check-label" for="q5-1">Nunca</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q5" id="q5-2" value="2">
- 							 <label class="form-check-label" for="q5-2">Raramente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q5" id="q5-3" value="3">
- 							 <label class="form-check-label" for="q5-3">Algumas vezes</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q5" id="q5-4" value="4">
- 							 <label class="form-check-label" for="q5-4">Frequentemente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q5" id="q5-5" value="5">
- 							 <label class="form-check-label" for="q5-5">Quase sempre</label>
- 							</div>
- 						</td>
- 					</tr>
- 					<tr>
- 						<th scope="row">6</th>
- 						<td> 
- 							Você já continuou a jogar com a mesma intensidade mesmo sabendo que isso estava causando problemas entre você e outras pessoas?
- 						</td>
- 						<td>
- 							<div class="form-check">						
- 							 <input class="form-check-input" type="radio" name="q6" id="q6-1" value="1">
- 							 <label class="form-check-label" for="q6-1">Nunca</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q6" id="q6-2" value="2">
- 							 <label class="form-check-label" for="q6-2">Raramente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q6" id="q6-3" value="3">
- 							 <label class="form-check-label" for="q6-3">Algumas vezes</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q6" id="q6-4" value="4">
- 							 <label class="form-check-label" for="q6-4">Frequentemente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q6" id="q6-5" value="5">
- 							 <label class="form-check-label" for="q6-5">Quase sempre</label>
- 							</div>
- 						</td>
- 					</tr>
- 					<tr>
- 						<th scope="row">7</th>
- 						<td> 
- 							Você já escondeu de algum familiar, terapeuta ou outra pessoa, a quantidade de tempo que passou jogando?
- 						</td>
- 						<td>
- 							<div class="form-check">						
- 							 <input class="form-check-input" type="radio" name="q7" id="q7-1" value="1">
- 							 <label class="form-check-label" for="q7-1">Nunca</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q7" id="q7-2" value="2">
- 							 <label class="form-check-label" for="q7-2">Raramente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q7" id="q7-3" value="3">
- 							 <label class="form-check-label" for="q7-3">Algumas vezes</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q7" id="q7-4" value="4">
- 							 <label class="form-check-label" for="q7-4">Frequentemente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q7" id="q7-5" value="5">
- 							 <label class="form-check-label" for="q7-5">Quase sempre</label>
- 							</div>
- 						</td>
- 					</tr>
- 					<tr>
- 						<th scope="row">8</th>
- 						<td> 
- 							Você joga para evitar ou aliviar sentimentos difíceis (Exemplos: impotência, culpa, ansiedade)?
- 						</td>
- 						<td>
- 							<div class="form-check">						
- 							 <input class="form-check-input" type="radio" name="q8" id="q8-1" value="1">
- 							 <label class="form-check-label" for="q8-1">Nunca</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q8" id="q8-2" value="2">
- 							 <label class="form-check-label" for="q8-2">Raramente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q8" id="q8-3" value="3">
- 							 <label class="form-check-label" for="q8-3">Algumas vezes</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q8" id="q8-4" value="4">
- 							 <label class="form-check-label" for="q8-4">Frequentemente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q8" id="q8-5" value="5">
- 							 <label class="form-check-label" for="q8-5">Quase sempre</label>
- 							</div>
- 						</td>
- 					</tr>
- 					<tr>
- 						<th scope="row">9</th>
- 						<td> 
- 							Você já colocou em risco, perdeu um relacionamento importante, oportunidade de trabalho ou educacional, por causa dos videogames?
- 						</td>
- 						<td>
- 							<div class="form-check">						
- 							 <input class="form-check-input" type="radio" name="q9" id="q9-1" value="1">
- 							 <label class="form-check-label" for="q9-1">Nunca</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q9" id="q9-2" value="2">
- 							 <label class="form-check-label" for="q9-2">Raramente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q9" id="q9-3" value="3">
- 							 <label class="form-check-label" for="q9-3">Algumas vezes</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q9" id="q9-4" value="4">
- 							 <label class="form-check-label" for="q9-4">Frequentemente</label>
- 							</div>
- 							<div class="form-check">
- 							 <input class="form-check-input" type="radio" name="q9" id="q9-5" value="5">
- 							 <label class="form-check-label" for="q9-5">Quase sempre</label>
- 							</div>
- 						</td>
- 					</tr>
+	</div>
 
-
-  			</table>
-  		</div>	
-	</fieldset>
-	<div class="form-row mb-5 mt-3">
-		<div class="offset-9 offset-sm-10">
-			<button type="submit" class="btn btn-dark">Enviar</button>
+	<div id="not-gamer" class="not-gamer row justify-content-center text-justify border-top d-none">		
+		<div class="col-sm-10 col-lg-8">
+			<p> Novamente agradecemos o interesse em participar, no entanto, esta pesquisa é direcionada para pessoas que jogam video game. </p>
 		</div>
 	</div>
 
 
-	</form>
+
+	<div id="gamer1" class="row justify-content-center text-justify border-top d-none">		
+		<div class="col-sm-10 col-lg-8">
+			
+			<p> Essa pesquisa objetiva avaliar os hábitos de jogadores de videogame e como eles fazem escolhas. </p>
+			<p> O tempo total de resposta varia de 15 a 20 minutos.  </p>
+			<p> O procedimento tem duas etapas: </p>
+			<p> - A primeira etapa consiste em um <b>questionário</b> com perguntas básicas sobre seus hábitos como jogador e sobre algumas informações pessoais (lembramos que sua participação será mantida em sigilo) </p>
+			<p> - Enquanto a segunda, consiste em uma <b>tarefa de escolhas</b> em diferentes contextos. </p>
+			<p> Pedimos para que leia o <b>termo de consentimento</b> abaixo e sinalize sua concordância com os termos expostos antes de prosseguir. </p>
+
+
+
+			<h2 class="mt-5 mb-3 text-left"> Termo de Consentimento Livre e Esclarecido </h2>
+			<p>Você está sendo convidado para participar da presente pesquisa, que tem como objetivo avaliar hábitos de jogo e o modo com as pessoas fazem escolhas. Tendo em vista o crescente interesse pela compreensão da interação das pessoas com essa nova mídia, no âmbito da saúde pública. A pesquisa está sendo desenvolvida por Alexandre Rimar Cintra, sob orientação do Prof. Dr. Fábio Leyser Gonçalves, na Faculdade de Ciências da Universidade Estadual Paulista “Júlio de Mesquita Filho” (UNESP) em Bauru - SP.</p>
+			<p>Sua participação nessa pesquisa consistirá no preenchimento de questões online sobre seus hábitos de jogo e na execução de uma tarefa online com uma série de escolhas sobre situações hipotéticas envolvendo dinheiro e envolvendo videogames. Ressalta-se que a participação é voluntária e que, portanto, você pode se recusar a participar ou desistir do processo a qualquer momento durante o curso da pesquisa, inclusive retirar o consentimento para a utilização dos dados já coletados, sem qualquer tipo de prejuízo. Como essa é uma pesquisa de levantamento, a possibilidade de qualquer dano decorrente da sua participação é mínima. </p>
+			<p>Todas as informações obtidas através dessa pesquisa serão confidenciais, assegurando-se o sigilo sobre sua participação. Por ocasião da publicação dos resultados, estes serão divulgados sem identificação dos participantes, de forma a garantir o anonimato. Além disso, é garantido ao participante o acesso a esses resultados. Ressalta-se que esse documento é de acesso livre e pode ser requisitado aos pesquisadores, que se colocam à disposição para qualquer esclarecimento que se considere necessário.</p>
+			<p>O presente Termo está de acordo com as exigências contidas nos itens IV. 3 da Resolução nº 466 de 12 de dezembro de 2012 do Conselho Nacional de Saúde e foi aprovada pelo Comitê de Ética em Pesquisa (CEP) da Faculdade de Ciências da UNESP. O CEP é uma instituição, regulamentada pela Comissão Nacional de Ética em Pesquisa (CONEP), que visa a defesa dos interesses dos participantes da pesquisa, garantindo sua integridade e dignidade dentro dos padrões éticos. 
+			Ao aceitar o que foi especificado acima, você declara que foi informado dos objetivos do estudo proposto, de como se dará sua participação, dos procedimentos adotados e das garantias que lhe cabem. E declara seu consentimento em participar da pesquisa, como também concorda com a utilização dos dados obtidos para fins científicos (divulgação em eventos e publicações). </p>
+		</div>
+		<div class="col-sm-10 col-lg-8 text-left mt-3">
+			<adress>
+				<p><b>Pesquisador</b>: Alexandre Rimar Cintra<br> <a href="mailto:alrcintra@gmail.com">alrcintra@gmail.com</a> </p>
+				<p><b>Pesquisador Responsável</b>: Fábio Leyser Gonçalves<br> <a href="fabio.leyser@unesp.br">fabio.leyser@unesp.br</a></p>
+				<p><b>Instituição:</b> Faculdade de Ciências da Universidade Estadual Paulista "Júlio de Mesquita Filho" (UNESP)</p>
+				<p><b>Endereço</b>: Av. Eng. Luís Edmundo Carrijo Coube, 2085 - Núcleo Residencial Presidente Geisel, Bauru - SP. CEP: 17033-260</p>
+			</adress>
+		</div>		
+	</div>	
+	<div id="gamer2" class="gamer row justify-content-center text-justify d-none">
+		<div class="form-group col-sm-10 col-lg-8">
+			<h5 style="margin-top: 20px;">Você concorda com os termos expostos acima? </h5>
+			<div class="form-check">
+				<input class="form-check-input" id="consentimento" name="consentimento" type="checkbox" value="1" id="consentimento" onclick="consentment();" required>
+				<label class="form-check-label" for="consentimento">Eu concordo.</label>
+			</div>				
+		</div>
+	</div>
+	<div id="gamer3" class="gamer row d-none">
+		<div class="offset-sm-9 offset-8"></div>
+		<div class="form-group">
+			<button type="submit" id="consent-button" class="btn btn-success" aria-disabled="true" disabled>Prosseguir</button>
+		</div>
+	</div>
+
+
+	<div class="row border-top justify-content-center mt-3" id="footer">		
+		<div class="col-sm-4 mt-3">
+			<img src="img/unesplogo.jpg" class="img-fluid" alt="Logo da Unesp: Universidade Estadual Paulista Júlio de Mesquita Filho">
+		</div>
+		<div class="col-sm-4 mt-3">
+			<img src="img/fapesplogo.png" class="img-fluid" alt="Logo da FAPESP: Fundação de Amparo à Pesquisa de São Paulo">
+		</div>
+	</div>
 </div>
-
-
-
-
+</form>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
   </body>
 </html>

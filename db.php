@@ -26,7 +26,7 @@ function db_set () {
 	$sql = "CREATE DATABASE IF NOT EXISTS dlcr";
 	mysqli_query(db_connect(), $sql);
 
-	$tb_user = "CREATE TABLE IF NOT EXISTS personal_info (
+	$tb_personal_info = "CREATE TABLE IF NOT EXISTS personal_info (
 		user_id INT AUTO_INCREMENT PRIMARY KEY,
 		nascimento DATE NOT NULL,
 		sexo CHAR(1) NOT NULL,
@@ -36,16 +36,52 @@ function db_set () {
 		escolaridade CHAR(3) NOT NULL,
 		is_estudante TINYINT(1) NOT NULL,
 		area_formacao CHAR(1) NOT NULL,
-		horario_estudo CHAR(1) NOT NULL,
-		trabalha CHAR(1) ENUM(s,n),
+		horario_estudo CHAR(1),
+		trabalha CHAR(1) NOT NULL,
 		profissao VARCHAR(100),
-		horario_trab CHAR(1) ENUM(c,m,e),
-		alcool 
-		tabaco
-		outra_droga
+		horario_trab CHAR(1),
+		alcool TINYINT(1) NOT NULL,
+		tabaco TINYINT(1) NOT NULL,
+		outra_droga TINYINT(1) NOT NULL,
+		freq_jogo TINYINT(1) NOT NULL,
+		hora_semana INT(3) NOT NULL,
+		tempo_vida TINYINT(2) NOT NULL,
+		tempo_sessao TINYINT(2) NOT NULL,
+		is_comp TINYINT(1) NOT NULL
+		)";
 
-		) ";
+	$tb_preferencia_jogo = "CREATE TABLE IF NOT EXISTS preferencia_jogo (
+		prefj_id INT AUTO_INCREMENT PRIMARY KEY,
+		user_id INT NOT NULL,
+		ordem TINYINT(1) NOT NULL,
+		titulo VARCHAR(50) NOT NULL,
+		hora_semanag INT(3) NOT NULL,
+		gamep_mode CHAR(1) NOT NULL,
+		FOREIGN KEY(user_id) REFERENCES user(user_id)	
+		)";
 
+	$tb_preferencia_plat = "CREATE TABLE IF NOT EXISTS preferencia_plataforma (
+		prefp_id INT AUTO_INCREMENT PRIMARY KEY,
+		user_id INT NOT NULL,
+		ordem TINYINT(1) NOT NULL,
+		plataforma CHAR(2) NOT NUll,
+		FOREIGN KEY(user_id) REFERENCES user(user_id)
+		)";
+
+	$tb_questionario = "CREATE TABLE IF NOT EXISTS questionario (
+		q_id INT AUTO_INCREMENT PRIMARY KEY,
+		user_id INT NOT NULL,
+		q1 TINYINT(1) NOT NULL,
+		q2 TINYINT(1) NOT NULL,
+		q3 TINYINT(1) NOT NULL,
+		q4 TINYINT(1) NOT NULL,
+		q5 TINYINT(1) NOT NULL,
+		q6 TINYINT(1) NOT NULL,
+		q7 TINYINT(1) NOT NULL,
+		q8 TINYINT(1) NOT NULL,
+		q9 TINYINT(1) NOT NULL,
+		FOREIGN KEY(user_id) REFERENCES user(user_id)
+		)";
 
 	$tb_tempo_tarefa = "CREATE TABLE IF NOT EXISTS tempo_tarefa (
 		tempo_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -67,10 +103,14 @@ function db_set () {
 		)";
 
 
-		mysqli_query($con, $sql);
-		mysqli_query($con, $tb_user);
-		mysqli_query($con, $tb_tempo_tarefa);
-		mysqli_query($con, $tb_results);
+	mysqli_query($con, $sql);
+	mysqli_query($con, $tb_personal_info);
+	mysqli_query($con, $tb_preferencia_jogo);
+	mysqli_query($con, $tb_preferencia_plat);
+	mysqli_query($con, $tb_preferencia_jogo);
+	mysqli_query($con, $tb_questionario);
+	mysqli_query($con, $tb_tempo_tarefa);
+	mysqli_query($con, $tb_results);
 };
 
 function insert ($query) {

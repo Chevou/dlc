@@ -1,0 +1,14 @@
+-- Configurar banco de dados
+	- Criar BD
+	- Criar tabelar
+	- Preencher tabelas padrões
+
+-- Mudar a data minima de idade
+
+
+
+
+Pra implementar:
+- Capturar hora da resposta
+- Capturar IP
+- Capturar Email
