@@ -8,7 +8,14 @@
 
 
 
+
+
 Pra implementar:
+- validação de navegação (não deixar voltar);
+- validação de input (PHP)
+	-- consertar opcionais que quebram (tri);
+- página final
+
 - Capturar hora da resposta
 - Capturar IP
 - Capturar Email
