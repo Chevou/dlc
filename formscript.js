@@ -36,7 +36,6 @@ function isgamer() {
 	} 
 };
 
-
 // Funções de Formulário
 
 function isworker () {
@@ -53,7 +52,7 @@ function isworker () {
 		profissao.disabled = true;
 		h_trabalho.disabled = true;
 	}
-}
+};
 
 function isstudent () {
 	var is_student1 = document.getElementById('is_estudante1');
@@ -70,8 +69,7 @@ function isstudent () {
 
 		return 0;
 	}
-}
-
+};
 
 function grade() {
 	var escolaridade = document.getElementById('escolaridade');
@@ -83,5 +81,15 @@ function grade() {
 	} else {
 		formacao.disabled = true;
 	}
-}
+};
+
+function prosseguir() {
+	var current_path = window.location.href;
+
+	if (current_path.includes('intro2.php')) {
+		window.location.replace('../dlc/dlc1.php');
+	} else if (current_path.includes('intro3.php')) {
+		window.location.replace('../dlc/dlc2.php')};
+};
+
 

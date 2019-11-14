@@ -41,7 +41,7 @@ function delayDiscounting() {
 	xhttp.open("GET", "main.php?choice=" + clicked + "&value=" + valor + "&resetter=" + resetter + "&contador=" + contador + "&valdb=" + valdb, true);
 	xhttp.onload = function () {		
 			var resposta = document.getElementById("val-imediato");
-			resposta.innerHTML = xhttp.responseText;
+			resposta.innerHTML = Math.round(xhttp.responseText);
 			console.log(xhttp.responseText);	
 		};
 	xhttp.send(); 

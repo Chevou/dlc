@@ -18,7 +18,7 @@ if ($validation1 != 1 && $valitation2 != 1) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Questionário de Hábitos de Jogador</title>
+    <title>Pesquisa sobre Hábitos de Jogador</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@ if ($validation1 != 1 && $valitation2 != 1) {
 		<div class="col-sm-10 col-lg-8">
 		</div>
 	</div>
-	<form id="subject-info" action="./data.php" method="post">
+	<form id="subject-info" action='<?php echo htmlspecialchars("./data.php");?>' method="post">
 	<fieldset>
 		<legend> Informações Pessoais </legend>
 
@@ -189,7 +189,7 @@ if ($validation1 != 1 && $valitation2 != 1) {
 			</div>
 
 			<div class="form-group col-sm-2">
-				<label for="horario_estudo">Condição de Estudo</label>
+				<label for="horario_estudo">Período</label>
     			<select class="form-control" name="horario_estudo" id="horario_estudo" disabled required>
     				<option value="Selecione" selected disabled hidden>Selecione</option>
 				    <option value="M">Matutino</option>
@@ -380,7 +380,16 @@ if ($validation1 != 1 && $valitation2 != 1) {
 	  	</div>
   	</fieldset>
   	<fieldset>
-  		<legend> Preferências de Jogo </legend>
+  		<legend class="mt-5"> Preferências de Jogo </legend>
+  		<div class="row">
+  			<div class="col-sm-12 text-justify">
+  				<p> As próximas perguntas têm o objetivo de avaliar os seus hábitos relacionados a videogames e são válidas para qualquer plataforma (computador, smartphone, tablet e console de jogo) e para qualquer tipo de jogo (online, off-line, tiro em primeira pessoa, puzzles, ação etc.). Você deve considerar seus hábitos de jogo referentes aos últimos 12 meses. </p>
+  			</div>
+  			<div class="col-sm-12 text-justify mt-3">
+  				<h4> Jogos Preferidos </h4>
+  				<p> Indique na tabela abaixo o título de ao menos 3 dos <b>jogos</b> mais jogados por você e o respectivo <b>tempo médio</b> que passa jogando cada um deles. Indique também a <b>modalidade</b> de preferência. Para jogos com duas modalidades, <i>multiplayer</i> (multiplos jogadores) e <i>singleplayer</i> (um jogador), indique a modalidade que você mais joga. </p>
+  			</div>
+  		</div>
   		<div class="row">
   			<div class="table-responsive">
 	  			<table class="table">
@@ -472,7 +481,7 @@ if ($validation1 != 1 && $valitation2 != 1) {
 					      <th scope="row">4</th>
 					      <td>
 					      	<div class="form-group">
-	    						<label class="sr-only" for="gamep4">Jogo 4</label>
+	    						<label class="sr-only" for="gamep4">Jogo 4 </label>
 	    						<input type="text" class="form-control" id="gamep4" name="gamep4" placeholder="Jogo 4">
  							</div>
 					      </td>
@@ -522,10 +531,12 @@ if ($validation1 != 1 && $valitation2 != 1) {
 				</table>
 		</div>
   		</div>
-  	</fieldset>
-  	<fieldset>
-  		<legend> Preferências de Plataforma </legend>
+  	
   		<div class="row">
+  			<div class="col-sm-12 text-justify mt-3">
+  				<h4> Plataforma Preferidos </h4>
+  				<p> Indique a ordem em que você prefere jogar dependendo da plataforma (de 1: preferida a 4: menos preferida).  </p>
+  			</div>
   			<div class="table-responsive">
 	  			<table class="table">
 					<thead>
@@ -601,7 +612,12 @@ if ($validation1 != 1 && $valitation2 != 1) {
   		</div>
   	</fieldset>
   	<fieldset>
-  		<legend> Questionário de Dependência de Jogos </legend>
+  		<legend class="mt-3"> Questionário de Dependência de Jogos </legend>
+  		<div class="row">
+  			<div class="col-sm-12 text-justify">
+  				<p> As questões que se seguem remetem a toda e qualquer atividade relacionada ao tempo despendido em videogames nos últimos 12 meses. As atividades relacionadas com os videogames referem-se, mais concretamente, a qualquer tempo despendido em jogar (quer pela Internet ou não), jogos em consoles, computadores, notebooks ou em qualquer outro tipo de dispositivo móvel (por exemplo: celular, tablet, etc.). A questões deverão ser respondidas dentro de uma escala com cinco opções (Nunca, Raramente, Algumas Vezes, Frequentemente, Quase Sempre). </p>
+  			</div>
+  		</div>
   		<div class="table-responsive">
   			<table class="table">
  				<thead>
@@ -620,23 +636,23 @@ if ($validation1 != 1 && $valitation2 != 1) {
  						<td>
  							<div class="form-check">						
  							 <input class="form-check-input" type="radio" name="q1" id="q1-1" value="1" required>
- 							 <label class="form-check-label" for="q4-1">Nunca</label>
+ 							 <label class="form-check-label" for="q1-1">Nunca</label>
  							</div>
  							<div class="form-check">
  							 <input class="form-check-input" type="radio" name="q1" id="q1-2" value="2">
- 							 <label class="form-check-label" for="q4-2">Raramente</label>
+ 							 <label class="form-check-label" for="q1-2">Raramente</label>
  							</div>
  							<div class="form-check">
  							 <input class="form-check-input" type="radio" name="q1" id="q1-3" value="3">
- 							 <label class="form-check-label" for="q4-3">Algumas vezes</label>
+ 							 <label class="form-check-label" for="q1-3">Algumas vezes</label>
  							</div>
  							<div class="form-check">
  							 <input class="form-check-input" type="radio" name="q1" id="q1-4" value="4">
- 							 <label class="form-check-label" for="q4-4">Frequentemente</label>
+ 							 <label class="form-check-label" for="q1-4">Frequentemente</label>
  							</div>
  							<div class="form-check">
  							 <input class="form-check-input" type="radio" name="q1" id="q1-5" value="5">
- 							 <label class="form-check-label" for="q4-5">Quase sempre</label>
+ 							 <label class="form-check-label" for="q1-5">Quase sempre</label>
  							</div>
  						</td>
  					</tr>
@@ -871,7 +887,7 @@ if ($validation1 != 1 && $valitation2 != 1) {
 	</fieldset>
 	<div class="form-row mb-5 mt-3">
 		<div class="offset-9 offset-sm-10">
-			<button type="submit" class="btn btn-dark">Enviar</button>
+			<button type="submit" class="btn btn-success">Prosseguir</button>
 		</div>
 	</div>
 
