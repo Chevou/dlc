@@ -27,7 +27,9 @@ function db_set () {
 	mysqli_query(db_connect(), $sql);
 
 	$tb_personal_info = "CREATE TABLE IF NOT EXISTS personal_info (
-		user_id INT AUTO_INCREMENT PRIMARY KEY,
+		user_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+		user_email VARCHAR(100),
+		submit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 		nascimento DATE NOT NULL,
 		sexo CHAR(1) NOT NULL,
 		estado_civil CHAR(1) NOT NULL,
@@ -35,7 +37,7 @@ function db_set () {
 		naturalidade CHAR(2) NOT NULL,
 		escolaridade CHAR(3) NOT NULL,
 		is_estudante TINYINT(1) NOT NULL,
-		area_formacao CHAR(1) NOT NULL,
+		area_formacao CHAR(1),
 		horario_estudo CHAR(1),
 		trabalha CHAR(1) NOT NULL,
 		profissao VARCHAR(100),
