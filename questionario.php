@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'db.php';
 
 $validation1 = isset($_SESSION['consent']) ? $_SESSION['consent'] : 0;
 $validation2 = isset($_SESSION['gamer']) ? $_SESSION['gamer'] : 0;
@@ -7,6 +8,317 @@ $validation2 = isset($_SESSION['gamer']) ? $_SESSION['gamer'] : 0;
 if ($validation1 != 1 && $valitation2 != 1) {
 	header('Location: ./index.php');
 }
+
+if(filter_has_var(INPUT_POST, 'submit')){
+
+	/*Informações Pessoais*/
+	$nascimento = $_POST['nascimento'] ?? null;
+	$sexo = $_POST['sexo'] ?? null;
+	$estado_civil = $_POST['estado_civil'] ?? null;
+	$residencia = $_POST['residencia'] ?? null;
+	$naturalidade = $_POST['naturalidade'] ?? null;
+	$escolaridade = $_POST['escolaridade'] ?? null;
+	$is_estudante = $_POST['is_estudante'] ?? null;
+	$formacao = $_POST['formacao'] ?? null;
+	$horario_estudo = $_POST['horario_estudo'] ?? null;
+	$profask = $_POST['profask'] ?? null;
+	$profissao = $_POST['profissao'] ?? null;
+	$h_trabalho = $_POST['h_trabalho'] ?? null;
+	$alcool = $_POST['alcool'] ?? null;
+	$tabaco = $_POST['tabaco'] ?? null;
+	$odroga = $_POST['odroga'] ?? null;
+	$jogo_freq = $_POST['jogo_freq'] ?? null;
+	$hora_semana = $_POST['hora_semana'] ?? null;
+	$jogoporvida = $_POST['jogoporvida'] ?? null;
+	$sessaojogo = $_POST['sessaojogo'] ?? null;
+	$comp = $_POST['comp'] ?? null;
+
+	/*Preferência de Jogo*/
+	$ordergp1 = 1;
+	$gamep1 = $_POST['gamep1'] ?? null;
+	$gamep_time1 = $_POST['gamep-time1'] ?? null;
+	$gamep_mode1 = $_POST['gamep-mode1'] ?? null;
+
+	$ordergp2 = 2;
+	$gamep2 = $_POST['gamep2'] ?? null;
+	$gamep_time2 = $_POST['gamep-time2'] ?? null;
+	$gamep_mode2 = $_POST['gamep-mode2'] ?? null;
+
+	$ordergp3 = 3;
+	$gamep3 = $_POST['gamep3'] ?? null;
+	$gamep_time3 = $_POST['gamep-time3'] ?? null;
+	$gamep_mode3 = $_POST['gamep-mode3'] ?? null;
+
+	$ordergp4 = 4;
+	$gamep4 = $_POST['gamep4'] ?? null;
+	$gamep_time4 = $_POST['gamep-time4'] ?? null;
+	$gamep_mode4 = $_POST['gamep-mode4'] ?? null;
+
+	$ordergp5 = 5;
+	$gamep5 = $_POST['gamep5'] ?? null;
+	$gamep_time5 = $_POST['gamep-time5'] ?? null;
+	$gamep_mode5 = $_POST['gamep-mode5'] ?? null;
+
+
+	/*Preferência de Plataforma*/
+	$orderpp1 = 1;
+	$platp1 = $_POST['platp1'] ?? null;
+
+	$orderpp2 = 2;
+	$platp2 = $_POST['platp2'] ?? null;
+
+	$orderpp3 = 3;
+	$platp3 = $_POST['platp3'] ?? null;
+
+	$orderpp4 = 4;
+	$platp4 = $_POST['platp4'] ?? null;
+
+
+	/*Questionário*/
+	$q1 = $_POST['q1'] ?? null;
+	$q2 = $_POST['q2'] ?? null;
+	$q3 = $_POST['q3'] ?? null;
+	$q4 = $_POST['q4'] ?? null;
+	$q5 = $_POST['q5'] ?? null;
+	$q6 = $_POST['q6'] ?? null;
+	$q7 = $_POST['q7'] ?? null;
+	$q8 = $_POST['q8'] ?? null;
+	$q9 = $_POST['q9'] ?? null;
+
+	if (
+	empty($nascimento) || 
+	empty($sexo) || 
+	empty($estado_civil) || 
+	empty($residencia) || 
+	empty($naturalidade) || 
+	empty($escolaridade) || 
+	empty($is_estudante) || 
+	empty($profask) || 
+	empty($alcool) || 
+	empty($tabaco) || 
+	empty($odroga) || 
+	empty($jogo_freq) || 
+	empty($hora_semana) || 
+	empty($jogoporvida) || 
+	empty($sessaojogo) || 
+	empty($comp)) {
+		$msg = "Preencha todos os campos necessários.";
+
+		if ($profask == 1) {
+			if (empty($profissao) || empty($h_trabalho)) {
+				$msg = "Preencha todos os campos necessários.";
+			} 
+		}
+		elseif ($is_estudante == 1) {
+			if (empty($horario_estudo)) {
+				$msg = "Preencha todos os campos necessários.";	
+			}
+			elseif ($escolaridade == "ESC" || $escolaridade == "ESI" || $escolaridade == "PGC" || $escolaridade == "PGI") {
+				if (empty($formacao)){
+					$msg = "Preencha todos os campos necessários.";
+				}
+			}
+		}
+		echo $msg;
+	} else {
+		$msg = "Ok";
+		echo $msg;
+	}
+	
+}
+
+
+
+
+/*db_insertion*/
+
+/*personal_info*/
+// $query1 = "INSERT INTO personal_info (
+// 	nascimento,
+// 	sexo,
+// 	estado_civil,
+// 	residencia,
+// 	naturalidade,
+// 	escolaridade,
+// 	is_estudante,
+// 	area_formacao,
+// 	horario_estudo,
+// 	trabalha,
+// 	profissao,
+// 	horario_trab,
+// 	alcool,
+// 	tabaco,
+// 	outra_droga,
+// 	freq_jogo,
+// 	hora_semana,
+// 	tempo_vida,
+// 	tempo_sessao,
+// 	is_comp
+// 	)
+// 	VALUES (
+// 	'$nascimento',
+// 	'$sexo',
+// 	'$estado_civil',
+// 	'$residencia',
+// 	'$naturalidade',
+// 	'$escolaridade',
+// 	'$is_estudante',
+// 	'$formacao',
+// 	'$horario_estudo',
+// 	'$profask',
+// 	'$profissao',
+// 	'$h_trabalho',
+// 	'$alcool',
+// 	'$tabaco',
+// 	'$odroga',
+// 	'$jogo_freq',
+// 	'$hora_semana',
+// 	'$jogoporvida',
+// 	'$sessaojogo',
+// 	'$comp'
+// )";
+// insert($query1);
+// $_SESSION['user_id'] = mysqli_insert_id(db_connect());
+// $user_id = $_SESSION['user_id'];
+
+
+// $query2_1 = "INSERT INTO preferencia_jogo (
+// 	user_id,
+// 	ordem,
+// 	titulo,
+// 	hora_semanag,
+// 	gamep_mode
+// 	)
+// 	VALUES (
+// 	'$user_id',
+// 	'$ordergp1',
+// 	'$gamep1',
+// 	'$gamep_time1',
+// 	'$gamep_mode1'
+// ) ";
+// insert($query2_1);
+
+// $query2_2 = "INSERT INTO preferencia_jogo (
+// 	user_id,
+// 	ordem,
+// 	titulo,
+// 	hora_semanag,
+// 	gamep_mode
+// 	)
+// 	VALUES (
+// 	'$user_id',
+// 	'$ordergp2',
+// 	'$gamep2',
+// 	'$gamep_time2',
+// 	'$gamep_mode2'
+// ) ";
+// insert($query2_2);
+
+// $query2_3 = "INSERT INTO preferencia_jogo (
+// 	user_id,
+// 	ordem,
+// 	titulo,
+// 	hora_semanag,
+// 	gamep_mode
+// 	)
+// 	VALUES (
+// 	'$user_id',
+// 	'$ordergp3',
+// 	'$gamep3',
+// 	'$gamep_time3',
+// 	'$gamep_mode3'
+// ) ";
+// insert($query2_3);
+
+// $query2_4 = "INSERT INTO preferencia_jogo (
+// 	user_id,
+// 	ordem,
+// 	titulo,
+// 	hora_semanag,
+// 	gamep_mode
+// 	)
+// 	VALUES (
+// 	'$user_id',
+// 	'$ordergp4',
+// 	'$gamep4',
+// 	'$gamep_time4',
+// 	'$gamep_mode4'
+// ) ";
+// insert($query2_4);
+
+// $query2_5 = "INSERT INTO preferencia_jogo (
+// 	user_id,
+// 	ordem,
+// 	titulo,
+// 	hora_semanag,
+// 	gamep_mode
+// 	)
+// 	VALUES (
+// 	'$user_id',
+// 	'$ordergp5',
+// 	'$gamep5',
+// 	'$gamep_time5',
+// 	'$gamep_mode5'
+// )";
+// insert($query2_5);
+
+
+// $query3_1 = "INSERT INTO preferencia_plataforma (
+// 	user_id,
+// 	ordem,
+// 	plataforma
+// 	)
+// 	VALUES (
+// 	'$user_id',
+// 	'$orderpp1',
+// 	'$platp1'
+// )";
+// insert($query3_1);
+
+// $query3_2 = "INSERT INTO preferencia_plataforma (
+// 	user_id,
+// 	ordem,
+// 	plataforma
+// 	)
+// 	VALUES (
+// 	'$user_id',
+// 	'$orderpp2',
+// 	'$platp2'
+// )";
+// insert($query3_2);
+
+// $query3_3 = "INSERT INTO preferencia_plataforma (
+// 	user_id,
+// 	ordem,
+// 	plataforma
+// 	)
+// 	VALUES (
+// 	'$user_id',
+// 	'$orderpp3',
+// 	'$platp3'
+// )";
+// insert($query3_3);
+
+// $query3_4 = "INSERT INTO preferencia_plataforma (
+// 	user_id,
+// 	ordem,
+// 	plataforma
+// 	)
+// 	VALUES (
+// 	'$user_id',
+// 	'$orderpp4',
+// 	'$platp4'
+// )";
+// insert($query3_4);
+
+// $query4 = "INSERT INTO questionario (
+// 	user_id, q1, q2, q3, q4, q5, q6, q7, q8, q9
+// 	)
+// 	VALUES (
+// 	'$user_id', '$q1', '$q2', '$q3', '$q4', '$q5', '$q6', '$q7', '$q8', '$q8'
+// )";
+// insert($query4);
+
 
 
  ?>
@@ -44,7 +356,7 @@ if ($validation1 != 1 && $valitation2 != 1) {
 		<div class="col-sm-10 col-lg-8">
 		</div>
 	</div>
-	<form id="subject-info" action='<?php echo htmlspecialchars("./data.php");?>' method="post">
+	<form id="subject-info" action='<?php htmlspecialchars($_SERVER['PHP_SELF']);?>' method="post" novalidate>
 	<fieldset>
 		<legend> Informações Pessoais </legend>
 
@@ -205,11 +517,11 @@ if ($validation1 != 1 && $valitation2 != 1) {
 			<div class = "col-sm-3"> 
 				<div>Você trabalha atualmente?</div>
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" name="profask" type="radio" value="s" id="profask1" onclick="isworker();" required>
+					<input class="form-check-input" name="profask" type="radio" value="1" id="profask1" onclick="isworker();" required>
 					<label class="form-check-label" for="profask1">Sim</label>
 				</div>				
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" name="profask" type="radio" value="n" id="profask2" onclick="isworker();" required>
+					<input class="form-check-input" name="profask" type="radio" value="0" id="profask2" onclick="isworker();" required>
 					<label class="form-check-label" for="profask2">Não</label>
 				</div>		
 			</div>
@@ -612,7 +924,7 @@ if ($validation1 != 1 && $valitation2 != 1) {
   		</div>
   	</fieldset>
   	<fieldset>
-  		<legend class="mt-3"> Questionário de Dependência de Jogos </legend>
+  		<legend class="mt-3"> </legend>
   		<div class="row">
   			<div class="col-sm-12 text-justify">
   				<p> As questões que se seguem remetem a toda e qualquer atividade relacionada ao tempo despendido em videogames nos últimos 12 meses. As atividades relacionadas com os videogames referem-se, mais concretamente, a qualquer tempo despendido em jogar (quer pela Internet ou não), jogos em consoles, computadores, notebooks ou em qualquer outro tipo de dispositivo móvel (por exemplo: celular, tablet, etc.). A questões deverão ser respondidas dentro de uma escala com cinco opções (Nunca, Raramente, Algumas Vezes, Frequentemente, Quase Sempre). </p>
@@ -887,7 +1199,7 @@ if ($validation1 != 1 && $valitation2 != 1) {
 	</fieldset>
 	<div class="form-row mb-5 mt-3">
 		<div class="offset-9 offset-sm-10">
-			<button type="submit" class="btn btn-success">Prosseguir</button>
+			<button type="submit" name="submit" class="btn btn-success">Prosseguir</button>
 		</div>
 	</div>
 

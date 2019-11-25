@@ -39,7 +39,7 @@ function db_set () {
 		is_estudante TINYINT(1) NOT NULL,
 		area_formacao CHAR(1),
 		horario_estudo CHAR(1),
-		trabalha CHAR(1) NOT NULL,
+		trabalha TINYINT(1) NOT NULL,
 		profissao VARCHAR(100),
 		horario_trab CHAR(1),
 		alcool TINYINT(1) NOT NULL,
