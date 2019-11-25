@@ -11,119 +11,111 @@ if ($validation1 != 1 && $valitation2 != 1) {
 
 if(filter_has_var(INPUT_POST, 'submit')){
 
+	$msg = '';
 	/*Informações Pessoais*/
-	$nascimento = $_POST['nascimento'] ?? null;
-	$sexo = $_POST['sexo'] ?? null;
-	$estado_civil = $_POST['estado_civil'] ?? null;
-	$residencia = $_POST['residencia'] ?? null;
-	$naturalidade = $_POST['naturalidade'] ?? null;
-	$escolaridade = $_POST['escolaridade'] ?? null;
-	$is_estudante = $_POST['is_estudante'] ?? null;
-	$formacao = $_POST['formacao'] ?? null;
-	$horario_estudo = $_POST['horario_estudo'] ?? null;
-	$profask = $_POST['profask'] ?? null;
-	$profissao = $_POST['profissao'] ?? null;
-	$h_trabalho = $_POST['h_trabalho'] ?? null;
-	$alcool = $_POST['alcool'] ?? null;
-	$tabaco = $_POST['tabaco'] ?? null;
-	$odroga = $_POST['odroga'] ?? null;
-	$jogo_freq = $_POST['jogo_freq'] ?? null;
-	$hora_semana = $_POST['hora_semana'] ?? null;
-	$jogoporvida = $_POST['jogoporvida'] ?? null;
-	$sessaojogo = $_POST['sessaojogo'] ?? null;
-	$comp = $_POST['comp'] ?? null;
+	$nascimento = $_POST['nascimento'] ?? '';
+	$sexo = $_POST['sexo'] ?? '';
+	$estado_civil = $_POST['estado_civil'] ?? '';
+	$residencia = $_POST['residencia'] ?? '';
+	$naturalidade = $_POST['naturalidade'] ?? '';
+	$escolaridade = $_POST['escolaridade'] ?? '';
+	$is_estudante = $_POST['is_estudante'] ?? '';
+	$formacao = $_POST['formacao'] ?? '';
+	$horario_estudo = $_POST['horario_estudo'] ?? '';
+	$profask = $_POST['profask'] ?? '';
+	$profissao = $_POST['profissao'] ?? '';
+	$h_trabalho = $_POST['h_trabalho'] ?? '';
+	$alcool = $_POST['alcool'] ?? '';
+	$tabaco = $_POST['tabaco'] ?? '';
+	$odroga = $_POST['odroga'] ?? '';
+	$jogo_freq = $_POST['jogo_freq'] ?? '';
+	$hora_semana = $_POST['hora_semana'] ?? '';
+	$jogoporvida = $_POST['jogoporvida'] ?? '';
+	$sessaojogo = $_POST['sessaojogo'] ?? '';
+	$comp = $_POST['comp'] ?? '';
 
 	/*Preferência de Jogo*/
 	$ordergp1 = 1;
-	$gamep1 = $_POST['gamep1'] ?? null;
-	$gamep_time1 = $_POST['gamep-time1'] ?? null;
-	$gamep_mode1 = $_POST['gamep-mode1'] ?? null;
+	$gamep1 = $_POST['gamep1'] ?? '';
+	$gamep_time1 = $_POST['gamep-time1'] ?? '';
+	$gamep_mode1 = $_POST['gamep-mode1'] ?? '';
 
 	$ordergp2 = 2;
-	$gamep2 = $_POST['gamep2'] ?? null;
-	$gamep_time2 = $_POST['gamep-time2'] ?? null;
-	$gamep_mode2 = $_POST['gamep-mode2'] ?? null;
+	$gamep2 = $_POST['gamep2'] ?? '';
+	$gamep_time2 = $_POST['gamep-time2'] ?? '';
+	$gamep_mode2 = $_POST['gamep-mode2'] ?? '';
 
 	$ordergp3 = 3;
-	$gamep3 = $_POST['gamep3'] ?? null;
-	$gamep_time3 = $_POST['gamep-time3'] ?? null;
-	$gamep_mode3 = $_POST['gamep-mode3'] ?? null;
+	$gamep3 = $_POST['gamep3'] ?? '';
+	$gamep_time3 = $_POST['gamep-time3'] ?? '';
+	$gamep_mode3 = $_POST['gamep-mode3'] ?? '';
 
 	$ordergp4 = 4;
-	$gamep4 = $_POST['gamep4'] ?? null;
-	$gamep_time4 = $_POST['gamep-time4'] ?? null;
-	$gamep_mode4 = $_POST['gamep-mode4'] ?? null;
+	$gamep4 = $_POST['gamep4'] ?? '';
+	$gamep_time4 = $_POST['gamep-time4'] ?? '';
+	$gamep_mode4 = $_POST['gamep-mode4'] ?? '';
 
 	$ordergp5 = 5;
-	$gamep5 = $_POST['gamep5'] ?? null;
-	$gamep_time5 = $_POST['gamep-time5'] ?? null;
-	$gamep_mode5 = $_POST['gamep-mode5'] ?? null;
+	$gamep5 = $_POST['gamep5'] ?? '';
+	$gamep_time5 = $_POST['gamep-time5'] ?? '';
+	$gamep_mode5 = $_POST['gamep-mode5'] ?? '';
 
 
 	/*Preferência de Plataforma*/
 	$orderpp1 = 1;
-	$platp1 = $_POST['platp1'] ?? null;
+	$platp1 = $_POST['platp1'] ?? '';
 
 	$orderpp2 = 2;
-	$platp2 = $_POST['platp2'] ?? null;
+	$platp2 = $_POST['platp2'] ?? '';
 
 	$orderpp3 = 3;
-	$platp3 = $_POST['platp3'] ?? null;
+	$platp3 = $_POST['platp3'] ?? '';
 
 	$orderpp4 = 4;
-	$platp4 = $_POST['platp4'] ?? null;
+	$platp4 = $_POST['platp4'] ?? '';
 
 
 	/*Questionário*/
-	$q1 = $_POST['q1'] ?? null;
-	$q2 = $_POST['q2'] ?? null;
-	$q3 = $_POST['q3'] ?? null;
-	$q4 = $_POST['q4'] ?? null;
-	$q5 = $_POST['q5'] ?? null;
-	$q6 = $_POST['q6'] ?? null;
-	$q7 = $_POST['q7'] ?? null;
-	$q8 = $_POST['q8'] ?? null;
-	$q9 = $_POST['q9'] ?? null;
+	$q1 = $_POST['q1'] ?? '';
+	$q2 = $_POST['q2'] ?? '';
+	$q3 = $_POST['q3'] ?? '';
+	$q4 = $_POST['q4'] ?? '';
+	$q5 = $_POST['q5'] ?? '';
+	$q6 = $_POST['q6'] ?? '';
+	$q7 = $_POST['q7'] ?? '';
+	$q8 = $_POST['q8'] ?? '';
+	$q9 = $_POST['q9'] ?? '';
 
-	if (
-	empty($nascimento) || 
-	empty($sexo) || 
-	empty($estado_civil) || 
-	empty($residencia) || 
-	empty($naturalidade) || 
-	empty($escolaridade) || 
-	empty($is_estudante) || 
-	empty($profask) || 
-	empty($alcool) || 
-	empty($tabaco) || 
-	empty($odroga) || 
-	empty($jogo_freq) || 
-	empty($hora_semana) || 
-	empty($jogoporvida) || 
-	empty($sessaojogo) || 
-	empty($comp)) {
-		$msg = "Preencha todos os campos necessários.";
+	function is_blank($value) {
+    return empty($value) && !is_numeric($value);
+}
+
+	if (empty($nascimento) || empty($sexo) || empty($estado_civil) || empty($residencia) || empty($naturalidade) || empty($escolaridade) || is_blank($is_estudante) || is_blank($profask) || empty($alcool) || empty($tabaco) || empty($odroga) || empty($jogo_freq) || empty($hora_semana) || empty($jogoporvida) || empty($sessaojogo) || empty($comp)) {
+		
+		$msg = "Preencha todos os campos necessários1.";
 
 		if ($profask == 1) {
 			if (empty($profissao) || empty($h_trabalho)) {
-				$msg = "Preencha todos os campos necessários.";
+				$msg = "Preencha todos os campos necessários2.";
 			} 
 		}
 		elseif ($is_estudante == 1) {
 			if (empty($horario_estudo)) {
-				$msg = "Preencha todos os campos necessários.";	
+				$msg = "Preencha todos os campos necessários3.";	
 			}
 			elseif ($escolaridade == "ESC" || $escolaridade == "ESI" || $escolaridade == "PGC" || $escolaridade == "PGI") {
 				if (empty($formacao)){
-					$msg = "Preencha todos os campos necessários.";
+					$msg = "Preencha todos os campos necessários4.";
 				}
 			}
 		}
-		echo $msg;
 	} else {
 		$msg = "Ok";
-		echo $msg;
 	}
+	echo $msg;
+
+	$teste = array ($nascimento, $sexo, $estado_civil, $residencia, $naturalidade, $escolaridade, $is_estudante, $profask, $alcool, $tabaco, $odroga, $jogo_freq, $hora_semana, $jogoporvida, $sessaojogo, $comp);
+	var_dump($teste);
 	
 }
 
