@@ -4,7 +4,7 @@ session_start();
 $consent = isset($_POST['consentimento']) ? $_POST['consentimento'] : 0;
 $_SESSION['consent'] = $consent;
 
-$gamer = $consent = isset($_POST['is_gamer']) ? $_POST['is_gamer'] : 0;
+$gamer = isset($_POST['is_gamer']) ? $_POST['is_gamer'] : 0;
 $_SESSION['gamer'] = $gamer;
 
 if ($consent == 1 && $gamer == 1) {
