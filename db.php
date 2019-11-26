@@ -28,7 +28,6 @@ function db_set () {
 
 	$tb_personal_info = "CREATE TABLE IF NOT EXISTS personal_info (
 		user_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-		user_email VARCHAR(100),
 		submit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 		nascimento DATE NOT NULL,
 		sexo CHAR(1) NOT NULL,
@@ -37,11 +36,11 @@ function db_set () {
 		naturalidade CHAR(2) NOT NULL,
 		escolaridade CHAR(3) NOT NULL,
 		is_estudante TINYINT(1) NOT NULL,
-		area_formacao CHAR(1),
-		horario_estudo CHAR(1),
+		area_formacao CHAR(1) NULL,
+		horario_estudo CHAR(1) NULL,
 		trabalha TINYINT(1) NOT NULL,
-		profissao VARCHAR(100),
-		horario_trab CHAR(1),
+		profissao VARCHAR(100) NULL,
+		horario_trab CHAR(1) NULL,
 		alcool TINYINT(1) NOT NULL,
 		tabaco TINYINT(1) NOT NULL,
 		outra_droga TINYINT(1) NOT NULL,
@@ -56,9 +55,9 @@ function db_set () {
 		prefj_id INT AUTO_INCREMENT PRIMARY KEY,
 		user_id INT NOT NULL,
 		ordem TINYINT(1) NOT NULL,
-		titulo VARCHAR(50) NOT NULL,
-		hora_semanag INT(3) NOT NULL,
-		gamep_mode CHAR(1) NOT NULL,
+		titulo VARCHAR(80) NULL,
+		hora_semanag INT(3) NULL,
+		gamep_mode CHAR(1)  NULL,
 		FOREIGN KEY(user_id) REFERENCES user(user_id)	
 		)";
 

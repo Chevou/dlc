@@ -20,7 +20,7 @@ require ("db.php");
     
 
 </head>
-<body style="background-color: #03A678; color: white;">
+<body style="background-color: #808080; color: white;">
 	<script src="./formscript.js" type="text/JavaScript"></script>
 	<form id="choiceBox" name='dlc-money'>
 	<div style="height: 25vh;"></div>

@@ -9,10 +9,14 @@ if ($validation1 != 1 && $valitation2 != 1) {
 	header('Location: ./index.php');
 }
 
+$msg = '';
+function is_blank($value) {
+    return empty($value) && !is_numeric($value);
+}
 
 if(filter_has_var(INPUT_POST, 'submit')){
 
-	/*Informações Pessoais*/
+/*Informações Pessoais*/
 	$nascimento = $_POST['nascimento'] ?? '';
 	$sexo = $_POST['sexo'] ?? '';
 	$estado_civil = $_POST['estado_civil'] ?? '';
@@ -85,312 +89,376 @@ if(filter_has_var(INPUT_POST, 'submit')){
 	$q7 = $_POST['q7'] ?? '';
 	$q8 = $_POST['q8'] ?? '';
 	$q9 = $_POST['q9'] ?? '';
+/*infopessoais fim*/
 
-	function is_blank($value) {
-    return empty($value) && !is_numeric($value);
-}
-
-	if (empty($nascimento) || empty($sexo) || empty($estado_civil) || empty($residencia) || empty($naturalidade) || empty($escolaridade) || is_blank($is_estudante) || is_blank($profask) || empty($alcool) || empty($tabaco) || empty($odroga) || empty($jogo_freq) || empty($hora_semana) || empty($jogoporvida) || empty($sessaojogo) || empty($comp) || empty($gamep1) || empty($gamep2) || empty($gamep3) || empty($gamep_mode1) || empty($gamep_mode2) || empty($gamep_mode3) || empty($gamep_time1) || empty($gamep_time2) || empty($gamep_time3) || empty($platp1) || empty($platp2) || empty($platp3) || empty($platp4) || empty($q1) || empty($q2) || empty($q3) || empty($q4) || empty($q5) || empty($q6) || empty($q7) || empty($q8) || empty($q9)) {
-		
-		$msg = "Preencha todos os campos necessários1.";
-
-		if ($profask == 1) {
-			if (empty($profissao) || empty($h_trabalho)) {
-				$msg = "Preencha todos os campos necessários2.";
+	function validatedate($val){
+		if (is_blank($val) == True) {
+			return false;
+		} else{
+			$date = explode('-', $val);			
+			$mes = $date[1] ?? 00;
+			$dia = $date[2] ?? 00;
+			$ano = $date[0] ?? 0000;
+			if (checkdate($mes, $dia, $ano) === True) {
+				return $val;
+			} else {
+				return false;
 			} 
 		}
-		elseif ($is_estudante == 1) {
-			if (empty($horario_estudo)) {
-				$msg = "Preencha todos os campos necessários3.";	
+	}
+	function validateint($val){
+		if (
+			filter_var($val, FILTER_VALIDATE_INT,array('options'=>array('min_range'=>0, 'max_range'=>168))) === 0 || 
+			filter_var($val, FILTER_VALIDATE_INT,array('options'=>array('min_range'=>0, 'max_range'=>168)))) {
+   			return $val;
+		} else {
+    		return 0;
+		}
+	}
+
+
+	$arr = array(				
+		"semana" => array(
+			"hora_semana" => $hora_semana,
+			"gamep_time1" => $gamep_time1, 
+			"gamep_time2" => $gamep_time2,
+			"gamep_time3" => $gamep_time3,
+			"gamep_time4" => $gamep_time4,
+			"gamep_time5" => $gamep_time5
+		),
+		"jogoporvida" => $jogoporvida,
+		"sessaojogo" => $sessaojogo,
+		"binary" => array(
+			"is_estudante" => $is_estudante, 
+			"profask" => $profask, 
+			"comp" => $comp,
+		),
+		"jogo_freq" => $jogo_freq,
+		"fiveopt" => array(
+			"alcool" => $alcool, 
+			"tabaco" => $tabaco, 
+			"odroga" => $odroga,
+			"q1" => $q1,
+			"q2" => $q2,
+			"q3" => $q3,
+			"q4" => $q4,
+			"q5" => $q5,
+			"q6" => $q6,
+			"q7" => $q7,
+			"q8" => $q8,
+			"q9" => $q9 
+		),
+		"nascimento" => $nascimento,
+		"texto" => array(
+			"profissao" => $profissao,
+			"gamep1" => $gamep1,
+			"gamep2" => $gamep2,
+			"gamep3" => $gamep3,
+			"gamep4" => $gamep4,
+			"gamep5" => $gamep5,
+			"sexo" => $sexo,
+			"estado_civil" => $estado_civil,
+			"residencia" => $residencia,
+			"naturalidade" => $naturalidade,
+			"escolaridade" => $escolaridade,
+			"formacao" => $formacao,
+			"horario_estudo" => $horario_estudo,
+			"h_trabalho" => $h_trabalho,
+			"gamep_mode1" => $gamep_mode1,
+			"gamep_mode2" => $gamep_mode2,
+			"gamep_mode3" => $gamep_mode3,
+			"gamep_mode4" => $gamep_mode4,
+			"gamep_mode5" => $gamep_mode5,
+			"platp1" => $platp1,
+			"platp2" => $platp2,
+			"platp3" => $platp3,
+			"platp4" => $platp4
+		)
+	);
+
+	$validate = array(
+		"semana" => array(
+			"filter" => FILTER_CALLBACK,
+			'flags'  => FILTER_REQUIRE_ARRAY|FILTER_NULL_ON_FAILURE,
+			"options" => 'validateint'
+		),
+		"jogoporvida" => array(
+			"filter" => FILTER_VALIDATE_INT,
+			"options" => array(
+				"min_range" => 1,
+				"max_range" => 69
+			)
+		),
+		"sessaojogo" => array(
+			"filter" => FILTER_VALIDATE_INT,
+			"options" => array(
+				"min_range" => 1,
+				"max_range" => 24
+			)
+		),
+		"binary" => array(
+			"filter" => FILTER_VALIDATE_INT,
+			'flags'  => FILTER_REQUIRE_ARRAY,
+			"options" => array(
+				"min_range" => 0,
+				"max_range" => 1
+			)
+		),
+		"jogo_freq" => array(
+			"filter" => FILTER_VALIDATE_INT,
+			"options" => array(
+				"min_range" => 1,
+				"max_range" => 3
+			)
+		),
+		"fiveopt" => array(
+			"filter" => FILTER_VALIDATE_INT,
+			'flags'  => FILTER_REQUIRE_ARRAY,
+			"options" => array(
+				"min_range" => 1,
+				"max_range" => 5
+			)
+		),
+		"nascimento" => array(
+			"filter" => FILTER_CALLBACK,
+			"options" => 'validatedate'
+		),
+		"texto" => array(
+			"filter" => FILTER_CALLBACK,
+			"options" => 'ucwords'
+		)
+	);
+
+	$va = filter_var_array($arr, $validate);
+	print_r(filter_var_array($arr, $validate));
+	extract($va);
+	extract($semana);
+	extract($binary);
+	extract($fiveopt);
+	extract($texto);
+	
+
+
+	if (empty($nascimento) || empty($sexo) || empty($estado_civil) || empty($residencia) || empty($naturalidade) || empty($escolaridade) || is_blank($is_estudante) || is_blank($profask) || empty($alcool) || empty($tabaco) || empty($odroga) || empty($jogo_freq) || empty($hora_semana) || empty($jogoporvida) || empty($sessaojogo) || is_blank($comp) || empty($gamep1) || empty($gamep2) || empty($gamep3) || empty($gamep_mode1) || empty($gamep_mode2) || empty($gamep_mode3) || empty($gamep_time1) || empty($gamep_time2) || empty($gamep_time3) || empty($platp1) || empty($platp2) || empty($platp3) || empty($platp4) || empty($q1) || empty($q2) || empty($q3) || empty($q4) || empty($q5) || empty($q6) || empty($q7) || empty($q8) || empty($q9)) {
+			
+			$msg = "Preencha todos os campos necessários1.";
+
+			if ($profask == 1) {
+				if (empty($profissao) || empty($h_trabalho)) {
+					$msg = "Preencha todos os campos necessários2.";
+				} 
 			}
-			elseif ($escolaridade == "ESC" || $escolaridade == "ESI" || $escolaridade == "PGC" || $escolaridade == "PGI") {
-				if (empty($formacao)){
-					$msg = "Preencha todos os campos necessários4.";
+			elseif ($is_estudante == 1) {
+				if (empty($horario_estudo)) {
+					$msg = "Preencha todos os campos necessários3.";	
+				}
+				elseif ($escolaridade == "ESC" || $escolaridade == "ESI" || $escolaridade == "PGC" || $escolaridade == "PGI") {
+					if (empty($formacao)){
+						$msg = "Preencha todos os campos necessários4.";
+					}
 				}
 			}
-		}
-	} else {
-
-		function val_date($valor){
-			$date = explode($valor, "-");
-			return checkdate($date['1'], $date['2'], $date['3']);
-		}
+		} else {	
+			$msg = "ok";
+			echo $msg;	
+			/*db_insertion*/
+			/*personal_info*/
 
 
-		$data = array(
-			"numero" => array(
-				$is_estudante, 
-				$profask, 
-				$alcool, 
-				$tabaco, 
-				$odroga,
-				$jogo_freq,
-				$hora_semana,
-				$jogoporvida,
-				$sessaojogo,
-				$comp,
-				$gamep_time1,
-				$gamep_time2,
-				$gamep_time3,
-				$gamep_time4,
-				$gamep_time5,
-				$q1,
-				$q2,
-				$q3,
-				$q4,
-				$q5,
-				$q6,
-				$q7,
-				$q8,
-				$q9
-				 ),
-			"data" => $nascimento,
-			"texto" => array(
-				$profissao,
-				$gamep1,
-				$gamep2,
-				$gamep3,
-				$gamep4,
-				$gamep5,
-			),
-			"ptext" => array (
-				$sexo,
-				$estado_civil,
-				$residencia,
-				$naturalidade,
-				$escolaridade,
-				$formacao,
-				$horario_estudo,
-				$h_trabalho,
-				$gamep_mode1,
-				$gamep_mode2,
-				$gamep_mode3,
-				$gamep_mode4,
-				$gamep_mode5,
-				$platp1,
-				$platp2,
-				$platp3,
-				$platp4
-			)
-		);
+			var_dump($gamep_time1, $gamep_time2, $gamep_time3, $gamep_time4, $gamep_time5);
 
-		$validate = array(
-			"numero" => array(
-				"filter" => FILTER_VALIDATE_INT
-			),
-			"data" => array(
-				"filter" => FILTER_CALLBACK,
-				"option" => "val_date"
-			),
-		);
+			$query1 = "INSERT INTO personal_info (
+				nascimento,
+				sexo,
+				estado_civil,
+				residencia,
+				naturalidade,
+				escolaridade,
+				is_estudante,
+				area_formacao,
+				horario_estudo,
+				trabalha,
+				profissao,
+				horario_trab,
+				alcool,
+				tabaco,
+				outra_droga,
+				freq_jogo,
+				hora_semana,
+				tempo_vida,
+				tempo_sessao,
+				is_comp
+				)
+				VALUES (
+				'$nascimento',
+				'$sexo',
+				'$estado_civil',
+				'$residencia',
+				'$naturalidade',
+				'$escolaridade',
+				'$is_estudante',
+				'$formacao',
+				'$horario_estudo',
+				'$profask',
+				'$profissao',
+				'$h_trabalho',
+				'$alcool',
+				'$tabaco',
+				'$odroga',
+				'$jogo_freq',
+				'$hora_semana',
+				'$jogoporvida',
+				'$sessaojogo',
+				'$comp'
+			)";
+			insert($query1);
+			$_SESSION['user_id'] = mysqli_insert_id(db_connect());
+			$user_id = $_SESSION['user_id'];
 
 
+			$query2_1 = "INSERT INTO preferencia_jogo (
+				user_id,
+				ordem,
+				titulo,
+				hora_semanag,
+				gamep_mode
+				)
+				VALUES (
+				'$user_id',
+				'$ordergp1',
+				'$gamep1',
+				'$gamep_time1',
+				'$gamep_mode1'
+			) ";
+			insert($query2_1);
+
+			$query2_2 = "INSERT INTO preferencia_jogo (
+				user_id,
+				ordem,
+				titulo,
+				hora_semanag,
+				gamep_mode
+				)
+				VALUES (
+				'$user_id',
+				'$ordergp2',
+				'$gamep2',
+				'$gamep_time2',
+				'$gamep_mode2'
+			) ";
+			insert($query2_2);
+
+			$query2_3 = "INSERT INTO preferencia_jogo (
+				user_id,
+				ordem,
+				titulo,
+				hora_semanag,
+				gamep_mode
+				)
+				VALUES (
+				'$user_id',
+				'$ordergp3',
+				'$gamep3',
+				'$gamep_time3',
+				'$gamep_mode3'
+			) ";
+			insert($query2_3);
+
+			$query2_4 = "INSERT INTO preferencia_jogo (
+				user_id,
+				ordem,
+				titulo,
+				hora_semanag,
+				gamep_mode
+				)
+				VALUES (
+				'$user_id',
+				'$ordergp4',
+				'$gamep4',
+				'$gamep_time4',
+				'$gamep_mode4'
+			) ";
+			insert($query2_4);
+
+			$query2_5 = "INSERT INTO preferencia_jogo (
+				user_id,
+				ordem,
+				titulo,
+				hora_semanag,
+				gamep_mode
+				)
+				VALUES (
+				'$user_id',
+				'$ordergp5',
+				'$gamep5',
+				'$gamep_time5',
+				'$gamep_mode5'
+			)";
+			insert($query2_5);
 
 
+			$query3_1 = "INSERT INTO preferencia_plataforma (
+				user_id,
+				ordem,
+				plataforma
+				)
+				VALUES (
+				'$user_id',
+				'$orderpp1',
+				'$platp1'
+			)";
+			insert($query3_1);
 
-		$msg = "Ok";
-		/*db_insertion*/
+			$query3_2 = "INSERT INTO preferencia_plataforma (
+				user_id,
+				ordem,
+				plataforma
+				)
+				VALUES (
+				'$user_id',
+				'$orderpp2',
+				'$platp2'
+			)";
+			insert($query3_2);
 
-		/*personal_info*/
-		$query1 = "INSERT INTO personal_info (
-			nascimento,
-			sexo,
-			estado_civil,
-			residencia,
-			naturalidade,
-			escolaridade,
-			is_estudante,
-			area_formacao,
-			horario_estudo,
-			trabalha,
-			profissao,
-			horario_trab,
-			alcool,
-			tabaco,
-			outra_droga,
-			freq_jogo,
-			hora_semana,
-			tempo_vida,
-			tempo_sessao,
-			is_comp
-			)
-			VALUES (
-			'$nascimento',
-			'$sexo',
-			'$estado_civil',
-			'$residencia',
-			'$naturalidade',
-			'$escolaridade',
-			'$is_estudante',
-			'$formacao',
-			'$horario_estudo',
-			'$profask',
-			'$profissao',
-			'$h_trabalho',
-			'$alcool',
-			'$tabaco',
-			'$odroga',
-			'$jogo_freq',
-			'$hora_semana',
-			'$jogoporvida',
-			'$sessaojogo',
-			'$comp'
-		)";
-		insert($query1);
-		$_SESSION['user_id'] = mysqli_insert_id(db_connect());
-		$user_id = $_SESSION['user_id'];
+			$query3_3 = "INSERT INTO preferencia_plataforma (
+				user_id,
+				ordem,
+				plataforma
+				)
+				VALUES (
+				'$user_id',
+				'$orderpp3',
+				'$platp3'
+			)";
+			insert($query3_3);
 
+			$query3_4 = "INSERT INTO preferencia_plataforma (
+				user_id,
+				ordem,
+				plataforma
+				)
+				VALUES (
+				'$user_id',
+				'$orderpp4',
+				'$platp4'
+			)";
+			insert($query3_4);
 
-		$query2_1 = "INSERT INTO preferencia_jogo (
-			user_id,
-			ordem,
-			titulo,
-			hora_semanag,
-			gamep_mode
-			)
-			VALUES (
-			'$user_id',
-			'$ordergp1',
-			'$gamep1',
-			'$gamep_time1',
-			'$gamep_mode1'
-		) ";
-		insert($query2_1);
+			$query4 = "INSERT INTO questionario (
+				user_id, q1, q2, q3, q4, q5, q6, q7, q8, q9
+				)
+				VALUES (
+				'$user_id', '$q1', '$q2', '$q3', '$q4', '$q5', '$q6', '$q7', '$q8', '$q8'
+			)";			
+			insert($query4);
 
-		$query2_2 = "INSERT INTO preferencia_jogo (
-			user_id,
-			ordem,
-			titulo,
-			hora_semanag,
-			gamep_mode
-			)
-			VALUES (
-			'$user_id',
-			'$ordergp2',
-			'$gamep2',
-			'$gamep_time2',
-			'$gamep_mode2'
-		) ";
-		insert($query2_2);
+			header('Location: ./intro2');
+		} 
 
-		$query2_3 = "INSERT INTO preferencia_jogo (
-			user_id,
-			ordem,
-			titulo,
-			hora_semanag,
-			gamep_mode
-			)
-			VALUES (
-			'$user_id',
-			'$ordergp3',
-			'$gamep3',
-			'$gamep_time3',
-			'$gamep_mode3'
-		) ";
-		insert($query2_3);
-
-		$query2_4 = "INSERT INTO preferencia_jogo (
-			user_id,
-			ordem,
-			titulo,
-			hora_semanag,
-			gamep_mode
-			)
-			VALUES (
-			'$user_id',
-			'$ordergp4',
-			'$gamep4',
-			'$gamep_time4',
-			'$gamep_mode4'
-		) ";
-		insert($query2_4);
-
-		$query2_5 = "INSERT INTO preferencia_jogo (
-			user_id,
-			ordem,
-			titulo,
-			hora_semanag,
-			gamep_mode
-			)
-			VALUES (
-			'$user_id',
-			'$ordergp5',
-			'$gamep5',
-			'$gamep_time5',
-			'$gamep_mode5'
-		)";
-		insert($query2_5);
-
-
-		$query3_1 = "INSERT INTO preferencia_plataforma (
-			user_id,
-			ordem,
-			plataforma
-			)
-			VALUES (
-			'$user_id',
-			'$orderpp1',
-			'$platp1'
-		)";
-		insert($query3_1);
-
-		$query3_2 = "INSERT INTO preferencia_plataforma (
-			user_id,
-			ordem,
-			plataforma
-			)
-			VALUES (
-			'$user_id',
-			'$orderpp2',
-			'$platp2'
-		)";
-		insert($query3_2);
-
-		$query3_3 = "INSERT INTO preferencia_plataforma (
-			user_id,
-			ordem,
-			plataforma
-			)
-			VALUES (
-			'$user_id',
-			'$orderpp3',
-			'$platp3'
-		)";
-		insert($query3_3);
-
-		$query3_4 = "INSERT INTO preferencia_plataforma (
-			user_id,
-			ordem,
-			plataforma
-			)
-			VALUES (
-			'$user_id',
-			'$orderpp4',
-			'$platp4'
-		)";
-		insert($query3_4);
-
-		$query4 = "INSERT INTO questionario (
-			user_id, q1, q2, q3, q4, q5, q6, q7, q8, q9
-			)
-			VALUES (
-			'$user_id', '$q1', '$q2', '$q3', '$q4', '$q5', '$q6', '$q7', '$q8', '$q8'
-		)";
-		insert($query4);
-	}
 		echo $msg;
-
-			// $teste = array ($nascimento, $sexo, $estado_civil, $residencia, $naturalidade, $escolaridade, $is_estudante, $profask, $alcool, $tabaco, $odroga, $jogo_freq, $hora_semana, $jogoporvida, $sessaojogo, $comp);
-			//var_dump($teste);
-}
-
-
-
-
-
-
-
- ?>
+};
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -425,7 +493,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
 		<div class="col-sm-10 col-lg-8">
 		</div>
 	</div>
-	<form id="subject-info" action='<?php htmlspecialchars($_SERVER['PHP_SELF']);?>' method="post" novalidate>
+	<form id="subject-info" action='<?php htmlspecialchars($_SERVER['PHP_SELF']);?>' method="post">
 	<fieldset>
 		<legend> Informações Pessoais </legend>
 
@@ -736,9 +804,9 @@ if(filter_has_var(INPUT_POST, 'submit')){
   			<div class="form-group col-sm-6">
 			    <label for="sessaojogo">Quanto tempo, em média, você passa em uma sessão de jogo?</label>
 			    <div class="input-group">
-				    <input type="number" class="form-control" style="max-width: 80px;" name="sessaojogo" id="sessaojogo" min='1' max="1440" required>
+				    <input type="number" class="form-control" style="max-width: 80px;" name="sessaojogo" id="sessaojogo" min='1' max="24" required>
 				    <div class="input-group-append">
-		    			<span class="input-group-text" id="basic-addon3">Minutos</span>
+		    			<span class="input-group-text" id="basic-addon3">Hora(s)</span>
 		  			</div>
 	  			</div>
   			</div>

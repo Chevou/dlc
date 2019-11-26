@@ -19,7 +19,7 @@ $user_id = $_SESSION['user_id'];
     
 
 </head>
-<body style="background-color: #FFA500; color: white;">
+<body style="background-color: #808080; color: white;">
 	<script src="./formscript.js" type="text/JavaScript"></script>
 	<form id="choiceBox" name='dlc-game'>
 	<div style="height: 25vh;"></div>
