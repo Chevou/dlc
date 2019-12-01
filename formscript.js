@@ -86,9 +86,9 @@ function grade() {
 function prosseguir() {
 	var current_path = window.location.href;
 
-	if (current_path.includes('intro2.php')) {
+	if (current_path.includes('intro2')) {
 		window.location.replace('../dlc/dlc1.php');
-	} else if (current_path.includes('intro3.php')) {
+	} else if (current_path.includes('intro3')) {
 		window.location.replace('../dlc/dlc2.php')};
 };
 

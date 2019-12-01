@@ -9,14 +9,16 @@ if ($validation1 != 1 && $valitation2 != 1) {
 	header('Location: ./index.php');
 }
 
+
 $msg = '';
+
 function is_blank($value) {
     return empty($value) && !is_numeric($value);
 }
 
 if(filter_has_var(INPUT_POST, 'submit')){
 
-/*Informações Pessoais*/
+	/*Informações Pessoais*/
 	$nascimento = $_POST['nascimento'] ?? '';
 	$sexo = $_POST['sexo'] ?? '';
 	$estado_civil = $_POST['estado_civil'] ?? '';
